@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   registrations: 'sitters/registrations'
 }
 
+  post 'parents/:id', to: 'parents#update'
+
   resources :calendars
+  resources :parents
 
   root to: 'calendars#index'
 

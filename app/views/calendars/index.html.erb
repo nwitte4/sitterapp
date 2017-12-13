@@ -7,14 +7,8 @@ Your babysitters:
 <% if @sitters.empty?%>
 <p>no sitters yet</p>
 <% else %>
-<%= @sitters.last %>
+<%= @sitters.last.email %>
 <% end %>
 </div>
 
-<div>
-  <h4>Add Sitters</h4>
-  <%= form_with(model: @sitter, local: true) do |f| %>
-      <%= f.select :sitter_ids, options_from_collection_for_select(Sitter.all, 'id', 'email') %>
-      <%= f.submit "Allow Access"%>
-    <% end %>
-</div>
+<%= link_to 'Add Sitters', @parent%>
