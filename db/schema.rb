@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213190818) do
+ActiveRecord::Schema.define(version: 20171213200821) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -32,6 +33,13 @@ ActiveRecord::Schema.define(version: 20171213190818) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_parents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
+  end
+
+  create_table "parents_sitters", id: false, force: :cascade do |t|
+    t.integer "parent_id", null: false
+    t.integer "sitter_id", null: false
+    t.index ["parent_id", "sitter_id"], name: "index_parents_sitters_on_parent_id_and_sitter_id"
+    t.index ["sitter_id", "parent_id"], name: "index_parents_sitters_on_sitter_id_and_parent_id"
   end
 
   create_table "sitters", force: :cascade do |t|

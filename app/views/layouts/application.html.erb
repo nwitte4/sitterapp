@@ -14,9 +14,10 @@
     <%= link_to 'Parent Sign Out', destroy_parent_session_path, method: :delete %>
     <% elsif sitter_signed_in? %>
     <%= link_to 'Sitter Sign Out', destroy_sitter_session_path, method: :delete %>
-    <% end %>
+    <% else %>
     <%= link_to 'Parent Sign In', new_parent_session_path%>
     <%= link_to 'Sitter Sign In', new_sitter_session_path%>
+    <% end %>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
