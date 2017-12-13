@@ -7,7 +7,10 @@ Your babysitters:
 <% if @sitters.empty?%>
 <p>no sitters yet</p>
 <% else %>
-<%= @sitters.last.email %>
+<% @sitters.each do |sitter| %>
+  <%= sitter.email %>
+  <br>
+  <% end %>
 <% end %>
 </div>
 
