@@ -2,16 +2,22 @@ Rails.application.routes.draw do
   # devise_for :sitters, path: 'sitters'
   # devise_for :parents, path: 'parents'
 
-    devise_for :parents, controllers: {
-    sessions: 'parents/sessions',
-    registrations: 'parents/registrations'
-  }
+  devise_for :parents, controllers: {
+  sessions: 'parents/sessions',
+  registrations: 'parents/registrations'
+}
   devise_for :sitters, controllers: {
   sessions: 'sitters/sessions',
   registrations: 'sitters/registrations'
 }
 
+  post 'parents/:id', to: 'parents#update'
+
   resources :calendars
+  resources :parents
+  resources :sitters
+
+  post '/sitters/:id', to: 'parents#remove_sitter_from_parent'
 
   root to: 'calendars#index'
 

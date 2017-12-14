@@ -13,3 +13,71 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  animation: redtowhitetext 5s;
+}
+
+html {
+  /*background: url("1.jpg") no-repeat center center fixed;*/
+  background-size: cover;
+}
+
+/*Calendar Styling HERE*/
+
+.simple-calendar {
+  display: grid;
+  margin: auto;
+  padding-bottom: 30px
+}
+
+.calendar-heading {
+  font-size: 20px;
+  margin: auto;
+  background-color: white
+}
+ .cal-day {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  margin: 0 auto;
+  transition: background-color 1s;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  font-size: 50px;
+  color: #A5A5AF;
+}
+
+.cal-day:hover {
+  background-color: #77C9D4;
+}
+
+.table {
+  background-color: white;
+  font-size: 20px;
+  margin: auto;
+}
+
+.current-day {
+  border: 1px solid #015249;
+}
+
+.cal-grid {
+  display: grid;
+}
+
+/*End Calendar Styling*/

@@ -1,20 +1,54 @@
-<p>Calendar!</p>
+<!-- parent views -->
+<% if current_parent %>
 
-<p>Signed in as: <%= @parent.email %></p>
+  <p> Signed in as: <%= @parent.email %> </p>
 
-<div>
-Your babysitters:
-<% if @sitters.empty?%>
-<p>no sitters yet</p>
-<% else %>
-<%= @sitters.last %>
-<% end %>
-</div>
+  <% @current_time = Time.new %>
 
-<div>
-  <h4>Add Sitters</h4>
-  <%= form_with(model: @sitter, local: true) do |f| %>
-      <%= f.select :sitter_ids, options_from_collection_for_select(Sitter.all, 'id', 'email') %>
-      <%= f.submit "Allow Access"%>
+  <%= month_calendar do |date| %>
+    <div class="cal-day"> <%= date.day %> </div>
+  <% end %>
+
+  <div>
+    Your babysitters:
+    <% if @sitters.empty? %>
+      <p> No sitters yet. </p>
+    <% else %>
+      <% @sitters.each do |sitter| %>
+        <%= link_to sitter.email, sitters_path(sitter) %>
+        <br>
+        <% end %>
     <% end %>
-</div>
+  </div>
+
+  <%= link_to 'Add Sitters', @parent %>
+
+<% else %>
+
+<!-- Sitter Views -->
+
+  <p> Signed in as: <%= @sitter.email %> </p>
+
+  <% @current_time = Time.new %>
+
+  <%= month_calendar do |date| %>
+    <div class="cal-day"> <%= date.day %> </div>
+  <% end %>
+
+  <div>
+    Your clients:
+    <% if @parents.empty? %>
+      <p> No sitters yet. </p>
+    <% else %>
+      <% @parents.each do |parent| %>
+        <%= link_to parent.email, parents_path(parent) %>
+        <br>
+        <% end %>
+    <% end %>
+  </div>
+
+  <div class="request-box">
+    <%= link_to 'Request Client' %>
+  </div>
+
+<% end %>
