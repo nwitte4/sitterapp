@@ -1,17 +1,23 @@
-<p>Calendar!</p>
+<p> Calendar! </p>
 
-<p>Signed in as: <%= @parent.email %></p>
+<p> Signed in as: <%= @parent.email %> </p>
+
+<% @time1 = Time.new %>
+
+<%= month_calendar do |date| %>
+  <div class="cal-day"> <%= date.day %> </div>
+<% end %>
 
 <div>
-Your babysitters:
-<% if @sitters.empty?%>
-<p>no sitters yet</p>
-<% else %>
-<% @sitters.each do |sitter| %>
-  <%= sitter.email %>
-  <br>
+  Your babysitters:
+  <% if @sitters.empty? %>
+    <p> No sitters yet. </p>
+  <% else %>
+    <% @sitters.each do |sitter| %>
+      <%= link_to sitter.email, sitters_path(sitter) %>
+      <br>
+      <% end %>
   <% end %>
-<% end %>
 </div>
 
-<%= link_to 'Add Sitters', @parent%>
+<%= link_to 'Add Sitters', @parent %>

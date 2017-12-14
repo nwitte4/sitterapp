@@ -12,5 +12,16 @@ class ParentsController < ApplicationController
     end
   end
 
+  def remove_sitter_from_parent
+    parent = current_parent
+    sitter = Sitter.find(params[:id])
+
+    if sitter
+      parent.sitters.delete(sitter)
+      redirect_to '/'
+    end
+
+  end
+
 
 end
