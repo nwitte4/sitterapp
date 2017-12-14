@@ -23,16 +23,34 @@
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 a:hover {
   text-decoration: underline;
-  animation: redtowhitetext 5s;
+}
+
+a:visited{
+  color: black;
 }
 
 html {
   /*background: url("1.jpg") no-repeat center center fixed;*/
   background-size: cover;
+}
+
+h3, h5, p {
+  margin-left: 1vw;
+}
+
+button {
+  border-radius: 6px;
+  font-size: 15pt;
+  float: right;
+  margin: 1vw;
+  background-color: lightblue;
+  color: white;
+  padding: 5px;
 }
 
 /*Calendar Styling HERE*/
@@ -80,5 +98,43 @@ html {
 .cal-grid {
   display: grid;
 }
+
+nav {
+  border: 2px solid lightblue;
+  margin: 1em;
+  padding: 10px;
+}
+
+.open {
+  background-color: #a7efbe;
+  border: 1px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+
+.taken {
+  background-color: #ce5656;
+  border: 1px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+
+.babysitter-list{
+  display: grid;
+  margin: 2vw;
+  grid-gap: 1em;
+  grid-template-columns: repeat(3,1fr)
+}
+
+.parent-show-sitter-form {
+  margin-left: 1vw;
+}
+
+.submit-button {
+  background-color: lightgrey;
+  padding: 5px;
+  border-radius: 7px;
+}
+
 
 /*End Calendar Styling*/

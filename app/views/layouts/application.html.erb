@@ -12,8 +12,11 @@
     <nav>
     <% if parent_signed_in? %>
     <%= link_to 'Parent Sign Out', destroy_parent_session_path, method: :delete %>
+    <%= link_to 'Calendar', '/' %>
+    <%= link_to 'Create New Babysitting Gig', new_gig_path %>
     <% elsif sitter_signed_in? %>
     <%= link_to 'Sitter Sign Out', destroy_sitter_session_path, method: :delete %>
+    <%= link_to 'Calendar', '/' %>
     <% else %>
     <%= link_to 'Parent Sign In', new_parent_session_path%>
     <%= link_to 'Sitter Sign In', new_sitter_session_path%>

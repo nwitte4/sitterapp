@@ -23,7 +23,7 @@ class GigsController < ApplicationController
 
   def add_sitter_to_gig
     gig = Gig.find(params[:id])
-    
+
     if gig.sitter_id.nil?
       gig.sitter_id = current_sitter.id
     else
@@ -31,9 +31,9 @@ class GigsController < ApplicationController
     end
 
     if gig.save
-      redirect_to gig_path(gig)
-    else
       redirect_to '/'
+    else
+      redirect_to gig_path(gig)
     end
   end
 
