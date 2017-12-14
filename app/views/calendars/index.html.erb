@@ -3,10 +3,20 @@
 
   <p> Signed in as: <%= @parent.email %> </p>
 
+  <div class="add-gig">
+    <p> <%= link_to 'Create New Babysitting Gig', new_gig_path %> </p>
+  </div>
+
   <% @current_time = Time.new %>
 
-  <%= month_calendar do |date| %>
-    <div class="cal-day"> <%= date.day %> </div>
+  <%= month_calendar events: @gigs do |date, gigs| %>
+    <div class="cal-day"> <%= date.day %>
+      <br>
+      <% gigs.each do |gig| %>
+        <%= gig.name %>
+    <% end %>
+    </div>
+
   <% end %>
 
   <div>
@@ -29,10 +39,21 @@
 
   <p> Signed in as: <%= @sitter.email %> </p>
 
+  <% @show_ids = @parents.pluck(:id) %>
+  <%= @show_ids %>
+
   <% @current_time = Time.new %>
 
-  <%= month_calendar do |date| %>
-    <div class="cal-day"> <%= date.day %> </div>
+  <%= month_calendar events: @gigs do |date, gigs| %>
+    <div class="cal-day"> <%= date.day %>
+      <br>
+      <% gigs.each do |gig| %>
+        <%= link_to gig.name, gig_path(gig) %>
+        <% @gig_parent = Parent.where(id: gig.parent_id).last.email %> -
+        <%= @gig_parent.split('@')[0] %>
+    <% end %>
+    </div>
+
   <% end %>
 
   <div>

@@ -1,0 +1,26 @@
+<h1>Gig Info</h1>
+<p><%= @gig.name %></p>
+<span> On: <%= @gig.start_time.localtime.strftime("%B %d") %></span>
+<br>
+<span> From: <%= @gig.start_time.localtime.strftime("%I:%M %p") %></span>
+<br>
+<span> Until: <%= @gig.end_time.localtime.strftime("%I:%M %p") %></span>
+<br>
+<span> Payment: $<%= @gig.cost %></span>
+<br>
+<span> Status:
+  <% if @gig.sitter_id.nil? %>
+    Open
+    <br>
+    <%= link_to 'Claim This Gig', "gigs/#{@gig.id}", method: :post %>
+  <% else %>
+    Taken
+    <br>
+    <%= link_to 'Remove This Gig', "gigs/#{@gig.id}", method: :post %>
+  <% end %>
+</span>
+
+
+<% if current_parent %>
+<%= link_to 'Delete This Gig', gig_path(@gig), method: :delete, data: { confirm: "Are you sure you don't need this anymore?"}%>
+<% end %>

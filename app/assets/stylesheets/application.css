@@ -50,15 +50,16 @@ html {
 }
  .cal-day {
   display: inline-block;
-  height: 100px;
-  width: 100px;
+  height: 110px;
+  width: 110px;
   border: 1px solid black;
   margin: 0 auto;
   transition: background-color 1s;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 90px;
-  font-size: 50px;
+  /*text-align: center;*/
+  /*vertical-align: middle;*/
+  /*line-height: 90px;*/
+  padding: 5px;
+  font-size: 15px;
   color: #A5A5AF;
 }
 
