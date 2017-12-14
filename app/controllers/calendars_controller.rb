@@ -2,8 +2,13 @@ class CalendarsController < ApplicationController
   before_action :check_for_users
 
   def index
-    @parent = current_parent
-    @sitters = current_parent.sitters.all
+    if current_parent
+      @parent = current_parent
+      @sitters = current_parent.sitters.all
+    else
+      @sitter = current_sitter
+      @parents = current_sitter.parents.all
+    end
   end
 
 

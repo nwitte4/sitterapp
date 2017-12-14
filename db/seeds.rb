@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+require 'faker'
+
+test_parent = Parent.create(
+  email: 'testparent@test.com',
+  password: '123456'
+)
+
+test_sitter = Sitter.create(
+  email: 'testsitter@test.com',
+  password: '123456'
+)
+
+10.times do
+  sitter = Sitter.create(
+    email: Faker::Internet.email,
+    password: '123456'
+  )
+end
+
+10.times do
+  parent = Parent.create(
+    email: Faker::Internet.email,
+    password: '123456'
+  )
+end

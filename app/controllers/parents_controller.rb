@@ -1,5 +1,9 @@
 class ParentsController < ApplicationController
 
+  def index
+    @parent = Parent.find(params[:format])
+  end
+
   def update
     @parent = current_parent
     @sitter = Sitter.find(params[:sitter_ids])
