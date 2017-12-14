@@ -1,6 +1,14 @@
-<h3>Add Sitters</h3>
-<%= form_with(model: @parent, local: true) do |f| %>
-  <%= hidden_field_tag :parent, @parent %>
-  <%= f.select :sitter_ids, options_from_collection_for_select(Sitter.all, 'id', 'email') %>
-  <%= f.submit "Assign"%>
-<% end %>
+<div>
+  <h3>Welcome to Your Profile</h3>
+  <br>
+  <h5>Email: <%= @parent.email %> </h5>
+  <br>
+  <h3>Add Sitters</h3>
+  <div class="parent-show-sitter-form">
+    <%= form_with(model: @parent, local: true) do |f| %>
+      <%= hidden_field_tag :parent, @parent %>
+      <%= f.select :sitter_ids, options_from_collection_for_select(Sitter.all, 'id', 'email') %>
+      <%= f.submit "Assign", :class=> "submit-button"  %>
+    <% end %>
+  </div>
+</div>

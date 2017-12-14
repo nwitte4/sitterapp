@@ -1,38 +1,73 @@
 <!-- parent views -->
 <% if current_parent %>
 
-  <p> Signed in as: <%= @parent.email %> </p>
+  <p> Signed in as: <%= @parent.email %> </p> <%= link_to 'My Profile', parent_path(@parent)%>
 
   <% @current_time = Time.new %>
 
-  <%= month_calendar do |date| %>
-    <div class="cal-day"> <%= date.day %> </div>
-  <% end %>
+  <%= month_calendar events: @gigs do |date, gigs| %>
+    <div class="cal-day"> <%= date.day %>
+      <br>
+      <% gigs.each do |gig| %>
+        <% if gig.sitter_id.nil? %>
+          <div class="open">
+            <%= link_to gig.name, gig_path(gig) %>
+          </div>
+        <% else %>
+        <% @gig_sitter = Sitter.where(id: gig.sitter_id).last.email.split('@')[0] %>
+          <div class="taken">
+            <%= link_to gig.name, gig_path(gig) %>
+            <br>
+            Claimed: <%= @gig_sitter %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-  <div>
-    Your babysitters:
+  <% end %>
+  <button> <%= link_to 'Add Sitters', @parent %> </button>
+  <br>
+  <h3>Your babysitters:</h3>
+  <div class="babysitter-list">
     <% if @sitters.empty? %>
       <p> No sitters yet. </p>
     <% else %>
       <% @sitters.each do |sitter| %>
+        <div>
         <%= link_to sitter.email, sitters_path(sitter) %>
-        <br>
+        </div>
         <% end %>
     <% end %>
   </div>
-
-  <%= link_to 'Add Sitters', @parent %>
 
 <% else %>
 
 <!-- Sitter Views -->
 
-  <p> Signed in as: <%= @sitter.email %> </p>
+  <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter)%>
 
   <% @current_time = Time.new %>
 
-  <%= month_calendar do |date| %>
-    <div class="cal-day"> <%= date.day %> </div>
+  <%= month_calendar events: @gigs do |date, gigs| %>
+    <div class="cal-day"> <%= date.day %>
+      <br>
+      <% gigs.each do |gig| %>
+      <% @gig_parent = Parent.where(id: gig.parent_id).last.email.split('@')[0] %>
+
+        <% if gig.sitter_id.nil? %>
+          <div class="open">
+            <%= @gig_parent %>:
+            <%= link_to gig.name, gig_path(gig) %>
+          </div>
+        <% else %>
+          <div class="taken">
+            <%= @gig_parent %>:
+            <%= link_to gig.name, gig_path(gig) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
   <% end %>
 
   <div>

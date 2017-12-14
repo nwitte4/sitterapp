@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   resources :calendars
   resources :parents
   resources :sitters
+  resources :gigs
 
   post '/sitters/:id', to: 'parents#remove_sitter_from_parent'
+  post '/gigs/gigs/:id', to: 'gigs#add_sitter_to_gig'
 
   root to: 'calendars#index'
 

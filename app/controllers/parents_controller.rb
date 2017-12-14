@@ -4,6 +4,10 @@ class ParentsController < ApplicationController
     @parent = Parent.find(params[:format])
   end
 
+  def show
+    @parent = Parent.find(params[:id])
+  end
+
   def update
     @parent = current_parent
     @sitter = Sitter.find(params[:sitter_ids])
@@ -26,6 +30,13 @@ class ParentsController < ApplicationController
     end
 
   end
+
+  private
+
+  def parent_params
+      params.require(:parent).permit(:email, :password)
+  end
+
 
 
 end
