@@ -2,10 +2,12 @@ class SittersController < ApplicationController
 
   def index
     @sitter = Sitter.find(params[:format])
+    @requests = Request.all.where(sitter_email: @sitter.email)
   end
 
   def show
     @sitter = Sitter.find(params[:id])
+    @requests = Request.all.where(sitter_email: @sitter.email)
   end
 
   private

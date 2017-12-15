@@ -1,2 +1,33 @@
-<p><%= @sitter.email %></p>
-<%= link_to 'Remove', "/sitters/#{@sitter.id}", method: :post  %>
+<div class="sitter-index">
+  <% email = @sitter.email.split('@')[0] %>
+  <p> Email: <%= @sitter.email %> </p>
+  <br>
+  <% if @requests.empty?%>
+  <p> No current requests for <%=@sitter.email.split('@')[0]%> </p>
+  <% else %>
+  <p>Requested for: </p>
+  <% @requests.each do |request| %>
+    <%= request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
+    - $<%= request.cost %>
+  <% end %>
+  <% end %>
+
+  <%= form_with(model: Request.new, local: true) do |f| %>
+  <br>
+  <%= f.label "From", class: 'form-label' %>
+  <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
+  <br>
+  <%= f.label "Until", class: 'form-label' %>
+  <%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
+  <br>
+  <%= f.label "Cost", class: 'form-label' %>
+  <span>$<%= f.number_field :cost %></span>
+  <%= f.hidden_field :sitter_email, :value => @sitter.email %>
+  <br>
+
+  <%= f.submit "Request #{email.capitalize}", :class=> "submit-button"  %>
+  <% end %>
+  <br>
+
+  <%= link_to "Remove #{email.capitalize}", "/sitters/#{@sitter.id}", method: :post, :class=> "submit-button"  %>
+</div>

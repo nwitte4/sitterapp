@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214194324) do
+ActiveRecord::Schema.define(version: 20171215173003) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20171214194324) do
     t.integer "sitter_id", null: false
     t.index ["parent_id", "sitter_id"], name: "index_parents_sitters_on_parent_id_and_sitter_id"
     t.index ["sitter_id", "parent_id"], name: "index_parents_sitters_on_sitter_id_and_parent_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "sitter_email"
+    t.string "parent_email"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sitters", force: :cascade do |t|

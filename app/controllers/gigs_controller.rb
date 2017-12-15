@@ -21,6 +21,7 @@ class GigsController < ApplicationController
     end
   end
 
+
   def add_sitter_to_gig
     gig = Gig.find(params[:id])
 
