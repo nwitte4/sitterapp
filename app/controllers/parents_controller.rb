@@ -10,7 +10,7 @@ class ParentsController < ApplicationController
 
   def update
     @parent = current_parent
-    @sitter = Sitter.find(params[:sitter_ids])
+    @sitter = Sitter.find(params[:parent][:sitter_ids])
     @parent.sitters << @sitter
     if @parent.save
       redirect_to '/'
@@ -34,7 +34,7 @@ class ParentsController < ApplicationController
   private
 
   def parent_params
-      params.require(:parent).permit(:email, :password)
+    params.require(:parent).permit(:email, :password)
   end
 
 

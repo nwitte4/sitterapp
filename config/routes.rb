@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'requests/index'
+
+  get 'requests/show'
+
+  get 'requests/new'
+
+  get 'requests/create'
+
+  get 'requests/update'
+
+  get 'requests/edit'
+
+  get 'requests/destroy'
+
   # devise_for :sitters, path: 'sitters'
   # devise_for :parents, path: 'parents'
 
@@ -17,6 +31,7 @@ Rails.application.routes.draw do
   resources :parents
   resources :sitters
   resources :gigs
+  resources :requests
 
   post '/sitters/:id', to: 'parents#remove_sitter_from_parent'
   post '/gigs/gigs/:id', to: 'gigs#add_sitter_to_gig'

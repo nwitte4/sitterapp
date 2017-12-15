@@ -3,6 +3,21 @@
   <h3>Welcome to Your Sitter Profile</h3>
   <br>
   <h5> Email: <%= @sitter.email %> </h5>
-
+  <% if @requests.empty?%>
+    <p> You don't have any requests currently, <%=@sitter.email.split('@')[0]%> </p>
+  <% else %>
+    <p> You've been requested for: </p>
+    <% @requests.each do |request| %>
+      <br>
+      <%= request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
+      - $<%= request.cost %>
+      <br>
+      <% @parent = Parent.where(email: request.parent_email).last %>
+      By: <%= link_to @parent.email, parents_path(@parent.id)  %>
+      <br>
+      <%= link_to 'Accept Request', "/sitters/#{@sitter.id}", method: :post  %>
+      <br>
+    <% end %>
+  <% end %>
 
 </div>

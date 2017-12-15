@@ -6,7 +6,7 @@
   <h3>Add Sitters</h3>
   <div class="parent-show-sitter-form">
     <%= form_with(model: @parent, local: true) do |f| %>
-      <%= hidden_field_tag :parent, @parent %>
+      <%= f.hidden_field :parent, :value => @parent %>
       <%= f.select :sitter_ids, options_from_collection_for_select(Sitter.all, 'id', 'email') %>
       <%= f.submit "Assign", :class=> "submit-button"  %>
     <% end %>
