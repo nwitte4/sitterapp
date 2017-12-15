@@ -6,10 +6,12 @@
   <p> No current requests for <%=@sitter.email.split('@')[0]%> </p>
   <% else %>
   <p>Requested for: </p>
-  <% @requests.each do |request| %>
-    <%= request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
-    - $<%= request.cost %>
-  <% end %>
+    <% @requests.each do |request| %>
+      <br>
+      <%= request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
+      - $<%= request.cost %>
+      <br>
+    <% end %>
   <% end %>
 
   <%= form_with(model: Request.new, local: true) do |f| %>
