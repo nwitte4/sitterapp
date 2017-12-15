@@ -1,6 +1,6 @@
 <!-- parent views -->
 <% if current_parent %>
-
+<div>
   <p> Signed in as: <%= @parent.email %> </p> <%= link_to 'My Profile', parent_path(@parent)%>
 
   <% @current_time = Time.new %>
@@ -27,63 +27,65 @@
   <% end %>
   <button> <%= link_to 'Add Sitters', @parent %> </button>
   <br>
-  <h3>Your babysitters:</h3>
-  <div class="babysitter-list">
-    <% if @sitters.empty? %>
-      <p> No sitters yet. </p>
-    <% else %>
-      <% @sitters.each do |sitter| %>
-        <div>
-        <%= link_to sitter.email, sitters_path(sitter) %>
-        </div>
-        <% end %>
-    <% end %>
+  <div class="client-box">
+    <h3>Your babysitters:</h3>
+    <div class="babysitter-list">
+      <% if @sitters.empty? %>
+        <p> No sitters yet. </p>
+      <% else %>
+        <% @sitters.each do |sitter| %>
+          <div>
+          <%= link_to sitter.email, sitters_path(sitter) %>
+          </div>
+          <% end %>
+      <% end %>
+    </div>
   </div>
-
+</div>
 <% else %>
 
 <!-- Sitter Views -->
+  <div>
+    <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter)%>
 
-  <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter)%>
+    <% @current_time = Time.new %>
 
-  <% @current_time = Time.new %>
+    <%= month_calendar events: @gigs do |date, gigs| %>
+      <div class="cal-day"> <%= date.day %>
+        <br>
+        <% gigs.each do |gig| %>
+        <% @gig_parent = Parent.where(id: gig.parent_id).last.email.split('@')[0] %>
 
-  <%= month_calendar events: @gigs do |date, gigs| %>
-    <div class="cal-day"> <%= date.day %>
-      <br>
-      <% gigs.each do |gig| %>
-      <% @gig_parent = Parent.where(id: gig.parent_id).last.email.split('@')[0] %>
-
-        <% if gig.sitter_id.nil? %>
-          <div class="open">
-            <%= @gig_parent %>:
-            <%= link_to gig.name, gig_path(gig) %>
-          </div>
-        <% else %>
-          <div class="taken">
-            <%= @gig_parent %>:
-            <%= link_to gig.name, gig_path(gig) %>
-          </div>
+          <% if gig.sitter_id.nil? %>
+            <div class="open">
+              <%= @gig_parent %>:
+              <%= link_to gig.name, gig_path(gig) %>
+            </div>
+          <% else %>
+            <div class="taken">
+              <%= @gig_parent %>:
+              <%= link_to gig.name, gig_path(gig) %>
+            </div>
+          <% end %>
         <% end %>
+      </div>
+
+    <% end %>
+
+    <div class="client-box">
+      Your clients:
+      <% if @parents.empty? %>
+        <p> No sitters yet. </p>
+      <% else %>
+        <% @parents.each do |parent| %>
+          <%= link_to parent.email, parents_path(parent) %>
+          <br>
+          <% end %>
       <% end %>
     </div>
 
-  <% end %>
-
-  <div>
-    Your clients:
-    <% if @parents.empty? %>
-      <p> No sitters yet. </p>
-    <% else %>
-      <% @parents.each do |parent| %>
-        <%= link_to parent.email, parents_path(parent) %>
-        <br>
-        <% end %>
-    <% end %>
+    <div class="request-box">
+      <%= link_to 'Request Client' %>
+    </div>
   </div>
-
-  <div class="request-box">
-    <%= link_to 'Request Client' %>
-  </div>
-
 <% end %>

@@ -35,8 +35,9 @@ a:visited{
 }
 
 html {
-  /*background: url("1.jpg") no-repeat center center fixed;*/
+  background: url("border.jpg") no-repeat;
   background-size: cover;
+  background-size: contain;
 }
 
 h3, h5 {
@@ -138,6 +139,15 @@ nav {
   background-color: lightgrey;
   padding: 5px;
   border-radius: 7px;
+}
+
+.client-box{
+  background-color: lightblue;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid black;
 }
 
 
