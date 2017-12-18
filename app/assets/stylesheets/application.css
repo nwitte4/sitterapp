@@ -191,6 +191,17 @@ nav {
   grid-template-columns: repeat(3,1fr)
 }
 
+@keyframes wobble {
+  0% {}
+  25% {}
+  50% {}
+  100% {}
+}
+
+.sitter-list-email:hover {
+  animation: wobble
+}
+
 .parent-show-sitter-form {
   margin-left: 1vw;
 }
@@ -244,4 +255,23 @@ nav {
   margin-right: 1.2vw
 }
 
-/*End Calendar Styling*/
+/*gig show page*/
+
+.status {
+  margin-right: 75vw;
+  padding: 1em;
+}
+
+/*new gig page*/
+
+#gig-new {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(2, 1fr)
+}
+
+.new-gig {
+  background: url("cover.png") no-repeat;
+  background-size: cover;
+  padding: 3.5em;
+}

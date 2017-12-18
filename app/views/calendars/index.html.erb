@@ -47,7 +47,7 @@
           <p> No sitters yet. </p>
         <% else %>
           <% @sitters.each do |sitter| %>
-            <div>
+            <div class='sitter-list-email'>
               <%= link_to sitter.email, sitters_path(sitter) %>
             </div>
             <% end %>
