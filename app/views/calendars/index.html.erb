@@ -60,7 +60,8 @@
 <% else %>
 
 <!-- Sitter Views -->
-  <div>
+  <div class="page">
+
     <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter)%>
 
     <% @current_time = Time.new %>
@@ -88,7 +89,7 @@
     <% end %>
 
     <div class="client-box">
-      Your clients:
+      <h4>Your clients: </h4>
       <% if @parents.empty? %>
         <p> No sitters yet. </p>
       <% else %>
@@ -99,8 +100,6 @@
       <% end %>
     </div>
 
-    <div class="request-box">
-      <%= link_to 'Request Client' %>
-    </div>
+
   </div>
 <% end %>

@@ -215,11 +215,10 @@ nav {
 
 .client-box{
   background-color: lightblue;
-  padding: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding: 1em;
+  margin: 2em;
   border: 1px solid black;
+  display: grid;
 }
 
 .sitter-index {

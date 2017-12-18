@@ -16,9 +16,16 @@
       <br>
       <%= link_to 'Claim This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
     <% else %>
-      <p class="taken"> Taken by <%= Sitter.where(id: @gig.sitter_id).last.email %> </p>
-      <br>
-      <%= link_to 'Remove This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
+      <% if current_parent %>
+        <p class="taken"> Taken by <%= Sitter.where(id: @gig.sitter_id).last.email %> </p>
+        <br>
+      <% elsif @gig.sitter_id = current_sitter.id %>
+        <p class="taken"> Taken by you! </p>
+        <br>
+        <%= link_to 'Drop This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
+      <% else %>
+        <p class="taken"> Taken </p>
+      <% end %>
     <% end %>
   </div>
 
