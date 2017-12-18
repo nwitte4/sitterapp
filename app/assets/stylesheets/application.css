@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
  * {
   font-family: 'Open Sans Condensed', sans-serif;
   margin: 0;
@@ -74,6 +76,13 @@ nav {
   margin-bottom: 10%;
   padding: 15px;
   background-color: lightgrey;
+  font-size: 1.5em;
+  transition: background-color 1s;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.nav-elem:hover {
+  background-color: white;
 }
 
 .left {
@@ -90,17 +99,18 @@ nav {
 }
 
 .babysitting-buttons {
-  /*background-color: red;*/
   text-align: center;
   display: grid;
+  text-overflow: ellipsis;
   margin-top: 22vh;
 }
 
 .new-babysitter {
-  padding: 50px;
+  padding: 3em;
   background-color: pink;
   border: 1px solid pink;
-  border-radius: 4px
+  border-radius: 4px;
+  transition: background-color 1s;
 }
 
 .new-babysitter:hover {
@@ -189,6 +199,7 @@ nav {
   background-color: lightgrey;
   padding: 10px;
   border-radius: 7px;
+  font-size: 10pt
 }
 
 .client-box{
@@ -210,11 +221,27 @@ nav {
 
 }
 
+.remove-button {
+  background-color: #ce5656;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 10pt
+}
+
 .requested-sitters {
   border: 2px solid lightblue;
-  padding: 10px;
+  padding-top: 25px;
   text-align: center;
 }
 
+.request-form {
+  border: 2px solid lightblue;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.remove-sitter-option {
+  margin-right: 1.2vw
+}
 
 /*End Calendar Styling*/

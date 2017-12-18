@@ -7,7 +7,7 @@
   </div>
 
   <div class="remove-sitter-option">
-    <%= link_to "Remove #{email.capitalize}", "/sitters/#{@sitter.id}", method: :post %>
+    <%= link_to "Remove #{email.capitalize}", "/sitters/#{@sitter.id}", method: :post, class: 'remove-button right' %>
   </div>
 
   <div class="requested-sitters">
@@ -38,7 +38,7 @@
     <span>$<%= f.number_field :cost %></span>
     <%= f.hidden_field :sitter_email, :value => @sitter.email %>
     <br>
-    <%= f.submit "Request #{email.capitalize}", :class=> "submit-button"  %>
+    <%= f.submit "Request #{email.capitalize}", :class=> "submit-button right"  %>
     <% end %>
     <br>
   </div>
