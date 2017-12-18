@@ -34,8 +34,8 @@ a:visited{
   color: black;
 }
 
-html {
-  background: url("border.jpg") no-repeat;
+body {
+  /*background: url("baby.jpg") no-repeat;*/
   background-size: cover;
   background-size: contain;
 }
@@ -58,12 +58,61 @@ div {
   margin-left: 1vw;
 }
 
+nav {
+  border: 6px solid lightblue;
+  margin: 1em;
+  padding: 5px;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3em
+}
+
+.nav-elem {
+  border: 1px solid black;
+  margin-top: 15%;
+  margin-bottom: 10%;
+  padding: 15px;
+  background-color: lightgrey;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right
+}
+
+.page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.babysitting-buttons {
+  /*background-color: red;*/
+  text-align: center;
+  display: grid;
+  margin-top: 22vh;
+}
+
+.new-babysitter {
+  padding: 50px;
+  background-color: pink;
+  border: 1px solid pink;
+  border-radius: 4px
+}
+
+.new-babysitter:hover {
+  background-color: white;
+}
+
 /*Calendar Styling HERE*/
 
 .simple-calendar {
   display: grid;
   margin: auto;
-  padding-bottom: 30px
+  padding-bottom: 30px;
 }
 
 .calendar-heading {
@@ -78,12 +127,14 @@ div {
   border: 1px solid black;
   margin: 0 auto;
   transition: background-color 1s;
+  /*background: url("baby.png") no-repeat;*/
+  background-size: cover;
   /*text-align: center;*/
   /*vertical-align: middle;*/
   /*line-height: 90px;*/
   padding: 5px;
   font-size: 15px;
-  color: #A5A5AF;
+  color: black;
 }
 
 .cal-day:hover {
@@ -100,15 +151,13 @@ div {
   border: 1px solid #015249;
 }
 
+.sitter-box {
+  display: inline;
+}
+/*
 .cal-grid {
   display: grid;
-}
-
-nav {
-  border: 2px solid lightblue;
-  margin: 1em;
-  padding: 10px;
-}
+}*/
 
 .open {
   background-color: #a7efbe;

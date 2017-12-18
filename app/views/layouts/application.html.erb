@@ -10,16 +10,16 @@
 
   <body>
     <nav>
+    <%= image_tag "baby.png", size: "140x140" %>
     <% if parent_signed_in? %>
-    <%= link_to 'Parent Sign Out', destroy_parent_session_path, method: :delete %>
-    <%= link_to 'Calendar', '/' %>
-    <%= link_to 'Create New Babysitting Gig', new_gig_path %>
+    <%= link_to 'Calendar', '/', class: 'nav-elem' %>
+    <%= link_to 'Parent Sign Out', destroy_parent_session_path, method: :delete, class: 'nav-elem' %>
     <% elsif sitter_signed_in? %>
-    <%= link_to 'Sitter Sign Out', destroy_sitter_session_path, method: :delete %>
-    <%= link_to 'Calendar', '/' %>
+    <%= link_to 'Sitter Sign Out', destroy_sitter_session_path, method: :delete, class: 'nav-elem' %>
+    <%= link_to 'Calendar', '/', class: 'nav-elem' %>
     <% else %>
-    <%= link_to 'Parent Sign In', new_parent_session_path%>
-    <%= link_to 'Sitter Sign In', new_sitter_session_path%>
+    <%= link_to 'Parent Sign In', new_parent_session_path, class: 'nav-elem' %>
+    <%= link_to 'Sitter Sign In', new_sitter_session_path, class: 'nav-elem' %>
     <% end %>
     </nav>
     <p class="notice"><%= notice %></p>

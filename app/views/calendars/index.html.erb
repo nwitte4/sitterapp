@@ -1,47 +1,62 @@
 <!-- parent views -->
 <% if current_parent %>
-<div>
-  <p> Signed in as: <%= @parent.email %> </p> <%= link_to 'My Profile', parent_path(@parent)%>
+
+<div class="page">
 
   <% @current_time = Time.new %>
 
-  <%= month_calendar events: @gigs do |date, gigs| %>
-    <div class="cal-day"> <%= date.day %>
-      <br>
-      <% gigs.each do |gig| %>
-        <% if gig.sitter_id.nil? %>
-          <div class="open">
-            <%= link_to gig.name, gig_path(gig) %>
-          </div>
-        <% else %>
-        <% @gig_sitter = Sitter.where(id: gig.sitter_id).last.email.split('@')[0] %>
-          <div class="taken">
-            <%= link_to gig.name, gig_path(gig) %>
-            <br>
-            Claimed: <%= @gig_sitter %>
-          </div>
+  <div class="calendar">
+    <%= month_calendar events: @gigs do |date, gigs| %>
+      <div class="cal-day"> <%= date.day %>
+        <br>
+        <% gigs.each do |gig| %>
+          <% if gig.sitter_id.nil? %>
+            <div class="open">
+              <%= link_to gig.name, gig_path(gig) %>
+            </div>
+          <% else %>
+          <% @gig_sitter = Sitter.where(id: gig.sitter_id).last.email.split('@')[0] %>
+            <div class="taken">
+              <%= link_to gig.name, gig_path(gig) %>
+              <br>
+              Claimed: <%= @gig_sitter %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
 
-  <% end %>
-  <button> <%= link_to 'Add Sitters', @parent %> </button>
+    <% end %>
+  </div>
+
+  <div class="babysitting-buttons">
+    <p> <%= link_to 'Add Babysitting Gig', new_gig_path, class: 'new-babysitter' %> </p>
+
+    <p> <%= link_to 'Add New Sitter', @parent, class: 'new-babysitter' %> </p>
+
+    <p> <%= link_to 'View My Profile', parent_path(@parent), class: 'new-babysitter' %> </p>
+
+  </div>
+</div>
+
+<div class="sitter-box">
   <br>
   <div class="client-box">
     <h3>Your babysitters:</h3>
-    <div class="babysitter-list">
-      <% if @sitters.empty? %>
-        <p> No sitters yet. </p>
-      <% else %>
-        <% @sitters.each do |sitter| %>
-          <div>
-          <%= link_to sitter.email, sitters_path(sitter) %>
-          </div>
-          <% end %>
-      <% end %>
-    </div>
+      <div class="babysitter-list">
+        <% if @sitters.empty? %>
+          <p> No sitters yet. </p>
+        <% else %>
+          <% @sitters.each do |sitter| %>
+            <div>
+              <%= link_to sitter.email, sitters_path(sitter) %>
+            </div>
+            <% end %>
+        <% end %>
+      </div>
   </div>
 </div>
+
+
 <% else %>
 
 <!-- Sitter Views -->
