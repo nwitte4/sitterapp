@@ -118,22 +118,23 @@ nav {
 .calendar-heading {
   font-size: 20px;
   margin: auto;
-  background-color: white
 }
  .cal-day {
-  display: inline-block;
+  display: grid;
+  grid-auto-rows: minmax(15px, auto);
+  grid-auto-columns: minmax(15px; auto);
   height: 110px;
   width: 110px;
   border: 1px solid black;
   margin: 0 auto;
   transition: background-color 1s;
   /*background: url("baby.png") no-repeat;*/
-  background-size: cover;
+  /*background-size: cover;*/
   /*text-align: center;*/
   /*vertical-align: middle;*/
   /*line-height: 90px;*/
-  padding: 5px;
-  font-size: 15px;
+  padding: 7px;
+  font-size: .7em;
   color: black;
 }
 
@@ -186,7 +187,7 @@ nav {
 
 .submit-button {
   background-color: lightgrey;
-  padding: 5px;
+  padding: 10px;
   border-radius: 7px;
 }
 
@@ -199,6 +200,21 @@ nav {
   border: 1px solid black;
 }
 
+.sitter-index {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2em
+}
+
+.sitter-info {
+
+}
+
+.requested-sitters {
+  border: 2px solid lightblue;
+  padding: 10px;
+  text-align: center;
+}
 
 
 /*End Calendar Styling*/
