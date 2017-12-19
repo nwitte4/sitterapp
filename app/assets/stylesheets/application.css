@@ -14,19 +14,13 @@
  *= require_self
  */
 
- @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-
- * {
-  font-family: 'Open Sans Condensed', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Dosis|Gloria+Hallelujah|Handlee');
+* {
+  font-family: 'Handlee', cursive;
   margin: 0;
 	padding: 0;
 	border: 0;
 }
-
-body {
-  background-color: #1286b5
-}
-
 
 a {
   text-decoration: none;
@@ -35,6 +29,7 @@ a {
 
 a:hover {
   text-decoration: underline;
+  transform: scale(1.1);
 }
 
 a:visited{
@@ -42,13 +37,12 @@ a:visited{
 }
 
 body {
-  background: url("backgroundimg.jpg") no-repeat;
-  background-size: cover;
-  /*background-size: contain;*/
+  background: url("backgroundimg.jpg");
 }
 
-h3, h5 {
+h3, h4, h5, div {
   margin-left: 1vw;
+  letter-spacing: 1px;
 }
 
 button {
@@ -61,12 +55,12 @@ button {
   padding: 5px;
 }
 
-div {
-  margin-left: 1vw;
+button:hover {
+  /*text-decoration: underline;*/
+  transform: scale(1.1);
 }
 
 nav {
-  /*border: 6px solid #1286b5;*/
   margin: 1em;
   padding: 5px;
   display: grid;
@@ -83,11 +77,12 @@ nav {
   background-color: lightgrey;
   font-size: 1.5em;
   transition: background-color 1s;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 .nav-elem:hover {
   background-color: white;
+  text-decoration: none;
 }
 
 .left {
@@ -98,31 +93,13 @@ nav {
   float: right
 }
 
+
+/*Calendar index page*/
+
 .page {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-
-.babysitting-buttons {
-  text-align: center;
-  display: grid;
-  text-overflow: ellipsis;
-  margin-top: 22vh;
-}
-
-.new-babysitter {
-  padding: 3em;
-  background-color: #c40f64;
-  border: 1px solid #c40f64;
-  border-radius: 4px;
-  transition: background-color 1s;
-}
-
-.new-babysitter:hover {
-  background-color: white;
-}
-
-/*Calendar Styling HERE*/
 
 .simple-calendar {
   display: grid;
@@ -137,12 +114,12 @@ nav {
  .cal-day {
   display: grid;
   grid-auto-rows: minmax(15px, auto);
-  grid-auto-columns: minmax(15px; auto);
+  /*grid-auto-columns: minmax(15px; auto);*/
   height: 110px;
   width: 110px;
   border: 1px solid black;
   margin: 0 auto;
-  transition: background-color 1s;
+  transition: background-color .5s, transform .5s;
   background: url("calbackground.jpg") no-repeat;
   background-size: contain;
   background-color: white;
@@ -154,8 +131,13 @@ nav {
   color: black;
 }
 
+.current-day {
+  background-color: yellow;
+}
+
 .cal-day:hover {
   background-color: #77C9D4;
+  transform: scale(1.4);
 }
 
 .table {
@@ -164,17 +146,20 @@ nav {
   margin: auto;
 }
 
-.current-day {
-  border: 1px solid #015249;
+@keyframes rotating {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
 }
-
-.sitter-box {
-  display: inline;
+.rotating {
+  animation: rotating 8s linear infinite;
 }
-/*
-.cal-grid {
-  display: grid;
-}*/
 
 .open {
   background-color: #a7efbe;
@@ -190,33 +175,52 @@ nav {
   margin: 2px;
 }
 
-.taken-by-you {
-  background-color: #1286b5;
+.babysitting-actions {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 250px;
+  text-overflow: ellipsis;
+  margin-top: 22vh;
+}
+
+.babysitter-action-buttons {
+  padding: 2em;
+  background-color: #c40f64;
+  border: 1px solid #c40f64;
+  border-radius: 4px;
+  transition: background-color 1s;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.babysitter-action-buttons:hover {
+  background-color: white;
+  text-decoration: none;
+}
+
+.sitter-box {
+  display: inline;
+}
+
+.client-box{
+  background-color: #4293d1;
+  padding: 1em;
+  margin: 2em;
   border: 1px solid black;
-  padding: 2px;
-  margin: 2px;
+  display: grid;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 .babysitter-list{
   display: grid;
   margin: 2vw;
   grid-gap: 1em;
-  grid-template-columns: repeat(3,1fr)
+  grid-template-columns: repeat(3,1fr);
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
-@keyframes wobble {
-  0% {}
-  25% {}
-  50% {}
-  100% {}
-}
-
-.sitter-list-email:hover {
-  animation: wobble
-}
-
-.parent-show-sitter-form {
-  margin-left: 1vw;
+.sitter-list-email {
+  font-family: 'Gloria Hallelujah', cursive;
+  letter-spacing: .2em;
 }
 
 .submit-button {
@@ -227,13 +231,44 @@ nav {
   text-align: center;
 }
 
-.client-box{
-  background-color: #4293d1;
-  padding: 1em;
-  margin: 2em;
-  border: 1px solid black;
-  display: grid;
+.submit-button:hover {
+  transform: scale(1.1);
 }
+
+.taken-by-you {
+  background-color: #1286b5;
+  border: 1px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+
+/*parent index page*/
+
+.parent-index {
+
+}
+
+/*parent show page*/
+
+.parent-show {
+
+}
+
+.add-sitter-form {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  border: 2px solid #1286b5;
+  background-color: lightgrey;
+  padding: 25px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.parent-show-sitter-form {
+
+}
+
+/*sitter index page*/
 
 .sitter-index {
   display: grid;
@@ -243,6 +278,10 @@ nav {
 
 .sitter-info {
 
+}
+
+.remove-sitter-option {
+  margin-right: 1.2vw
 }
 
 .remove-button {
@@ -264,11 +303,24 @@ nav {
   margin-right: 10px;
 }
 
-.remove-sitter-option {
-  margin-right: 1.2vw
+/*sitter show page*/
+
+.sitter-show {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(2, 1fr);
 }
 
+
 /*gig show page*/
+
+.gig-show {
+
+}
+
+.gig-info {
+
+}
 
 .status {
   margin-right: 75vw;
@@ -288,12 +340,4 @@ nav {
   background-color: #9ebced;
   border-radius: 20px;
   margin-bottom: 1em;
-}
-
-/*sitter profile page, sitter show*/
-
-.sitter-show {
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: repeat(2, 1fr);
 }

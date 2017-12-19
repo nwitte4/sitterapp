@@ -7,7 +7,9 @@
 
   <div class="calendar">
     <%= month_calendar events: @gigs do |date, gigs| %>
-      <div class="cal-day"> <%= date.day %>
+    <% @calday = date.day %>
+    <% @today = @current_time.day %>
+      <div class="cal-day <%= 'current-day' if @calday == @today %>"> <%= date.day %>
         <br>
         <% gigs.each do |gig| %>
           <% if gig.sitter_id.nil? %>
@@ -15,11 +17,10 @@
               <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% else %>
-          <% @gig_sitter = Sitter.where(id: gig.sitter_id).last.email.split('@')[0] %>
+          <% @gig_sitter = Sitter.where(id: gig.sitter_id).last %>
             <div class="taken">
               <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
-              <br>
-              Claimed: <%= @gig_sitter %>
+              : <%= link_to @gig_sitter.email.split('@')[0], sitters_path(@gig_sitter.id)  %>
             </div>
           <% end %>
         <% end %>
@@ -28,12 +29,12 @@
     <% end %>
   </div>
 
-  <div class="babysitting-buttons">
-    <p> <%= link_to 'Add Babysitting Gig', new_gig_path, class: 'new-babysitter' %> </p>
+  <div class="babysitting-actions">
+    <p> <%= link_to 'Add Babysitting Gig', new_gig_path, class: 'babysitter-action-buttons' %> </p>
 
-    <p> <%= link_to 'Add New Sitter', @parent, class: 'new-babysitter' %> </p>
+    <p> <%= link_to 'Add New Sitter', @parent, class: 'babysitter-action-buttons' %> </p>
 
-    <p> <%= link_to 'View My Profile', parent_path(@parent), class: 'new-babysitter' %> </p>
+    <p> <%= link_to 'View My Profile', parent_path(@parent), class: 'babysitter-action-buttons' %> </p>
 
   </div>
 </div>
@@ -48,7 +49,7 @@
         <% else %>
           <% @sitters.each do |sitter| %>
             <div class='sitter-list-email'>
-              <%= link_to sitter.email, sitters_path(sitter) %>
+              <%= link_to sitter.email, sitters_path(sitter), class: 'sitter-list-email' %>
             </div>
             <% end %>
         <% end %>

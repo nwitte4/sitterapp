@@ -10,6 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).ready(function()
+//  {
+//     $('.logo .active-image').animate({
+//        marginTop: "-20px",
+//        marginLeft: "-200px",
+//      }, 1000);
+//
+//  });

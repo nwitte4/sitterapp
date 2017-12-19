@@ -3,7 +3,7 @@
   <div></div>
   <div class="new-gig">
     <%= form_with(model: @gig, local: true) do |f| %>
-    <%= f.label "Name: ", class: 'form-label' %>
+    <%= f.label "Name ", class: 'form-label' %>
     <br>
     <%= f.text_field :name, placeholder: 'Optional' %>
     <br>
@@ -28,6 +28,5 @@
     <% end %>
   </div>
 
-  <%= image_tag "babysitting.jpg", size: "300x300", class: 'right' %>
 
 </div>
