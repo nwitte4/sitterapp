@@ -4,15 +4,23 @@
   <div class="new-gig">
     <%= form_with(model: @gig, local: true) do |f| %>
     <%= f.label "Name: ", class: 'form-label' %>
-    <%= f.text_field :name %>
+    <br>
+    <%= f.text_field :name, placeholder: 'Optional' %>
     <br>
     <%= f.label "From", class: 'form-label' %>
-    <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
+    <br>
+    <%= f.datetime_select :start_time, :default => Time.now, ampm: true, use_short_month: true %>
     <br>
     <%= f.label "Until", class: 'form-label' %>
-    <%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
+    <br>
+    <%= f.datetime_select :end_time, :default => Time.now, ampm: true, use_short_month: true %>
+    <br>
+    <%= f.label "Description", class: 'form-label' %>
+    <br>
+    <%= f.text_area(:description, size: '60x12', placeholder: "Add any babysitting details you'd like! \n\n Dinner instructions? \n\n Allergies? \n\n Bedtimes? \n\n Your kid's current favorite game? \n\n Perks for the babysitter? ") %>
     <br>
     <%= f.label "Cost", class: 'form-label' %>
+    <br>
     <span>$<%= f.number_field :cost %></span>
     <br>
     <br>

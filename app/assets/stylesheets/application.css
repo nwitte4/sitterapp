@@ -37,9 +37,8 @@ a:visited{
 }
 
 body {
-  /*background: url("baby.jpg") no-repeat;*/
-  background-size: cover;
-  background-size: contain;
+  /*background: url("clouds.jpg") no-repeat;
+  background-size: cover;*/
 }
 
 h3, h5 {
@@ -51,7 +50,7 @@ button {
   font-size: 15pt;
   float: right;
   margin: 1vw;
-  background-color: lightblue;
+  background-color: #1286b5;
   color: white;
   padding: 5px;
 }
@@ -61,7 +60,7 @@ div {
 }
 
 nav {
-  border: 6px solid lightblue;
+  border: 6px solid #1286b5;
   margin: 1em;
   padding: 5px;
   display: grid;
@@ -107,8 +106,8 @@ nav {
 
 .new-babysitter {
   padding: 3em;
-  background-color: pink;
-  border: 1px solid pink;
+  background-color: #c40f64;
+  border: 1px solid #c40f64;
   border-radius: 4px;
   transition: background-color 1s;
 }
@@ -138,8 +137,8 @@ nav {
   border: 1px solid black;
   margin: 0 auto;
   transition: background-color 1s;
-  /*background: url("baby.png") no-repeat;*/
-  /*background-size: cover;*/
+  background: url("calbackground.jpg") no-repeat;
+  background-size: contain;
   /*text-align: center;*/
   /*vertical-align: middle;*/
   /*line-height: 90px;*/
@@ -184,6 +183,13 @@ nav {
   margin: 2px;
 }
 
+.taken-by-you {
+  background-color: #1286b5;
+  border: 1px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+
 .babysitter-list{
   display: grid;
   margin: 2vw;
@@ -210,11 +216,12 @@ nav {
   background-color: lightgrey;
   padding: 10px;
   border-radius: 7px;
-  font-size: 10pt
+  font-size: 10pt;
+  text-align: center;
 }
 
 .client-box{
-  background-color: lightblue;
+  background-color: #4293d1;
   padding: 1em;
   margin: 2em;
   border: 1px solid black;
@@ -239,13 +246,13 @@ nav {
 }
 
 .requested-sitters {
-  border: 2px solid lightblue;
+  border: 2px solid #1286b5;
   padding-top: 25px;
   text-align: center;
 }
 
 .request-form {
-  border: 2px solid lightblue;
+  border: 2px solid #1286b5;
   padding: 10px;
   margin-right: 10px;
 }
@@ -270,7 +277,16 @@ nav {
 }
 
 .new-gig {
-  background: url("cover.png") no-repeat;
-  background-size: cover;
   padding: 3.5em;
+  background-color: #9ebced;
+  border-radius: 20px;
+  margin-bottom: 1em;
+}
+
+/*sitter profile page, sitter show*/
+
+.sitter-show {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(2, 1fr);
 }

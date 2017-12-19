@@ -12,12 +12,12 @@
         <% gigs.each do |gig| %>
           <% if gig.sitter_id.nil? %>
             <div class="open">
-              <%= link_to gig.name, gig_path(gig) %>
+              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% else %>
           <% @gig_sitter = Sitter.where(id: gig.sitter_id).last.email.split('@')[0] %>
             <div class="taken">
-              <%= link_to gig.name, gig_path(gig) %>
+              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
               <br>
               Claimed: <%= @gig_sitter %>
             </div>
@@ -56,13 +56,12 @@
   </div>
 </div>
 
-
 <% else %>
 
 <!-- Sitter Views -->
   <div class="page">
 
-    <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter)%>
+    <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter), class: 'submit-button'%>
 
     <% @current_time = Time.new %>
 
@@ -75,12 +74,17 @@
           <% if gig.sitter_id.nil? %>
             <div class="open">
               <%= @gig_parent %>:
-              <%= link_to gig.name, gig_path(gig) %>
+              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
+            </div>
+          <% elsif gig.sitter_id == current_sitter.id %>
+            <div class="taken-by-you">
+              <%= @gig_parent %>:
+              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% else %>
             <div class="taken">
               <%= @gig_parent %>:
-              <%= link_to gig.name, gig_path(gig) %>
+              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% end %>
         <% end %>

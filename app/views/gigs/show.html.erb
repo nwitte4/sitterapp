@@ -5,6 +5,9 @@
     <p> <%= @gig.start_time.localtime.strftime("%I:%M %p") %></p>
     <h4> Until: </h4>
     <p><%= @gig.end_time.localtime.strftime("%I:%M %p") %></p>
+    <h4> Description: </h4>
+    <% @gig.description.nil? ? @gig.description = 'no details' : @gig.description %>
+    <p><%= @gig.description %></p>
     <h4> Payment: </h4>
     <p> $<%= @gig.cost %></p>
   </div>
@@ -19,7 +22,7 @@
       <% if current_parent %>
         <p class="taken"> Taken by <%= Sitter.where(id: @gig.sitter_id).last.email %> </p>
         <br>
-      <% elsif @gig.sitter_id = current_sitter.id %>
+      <% elsif @gig.sitter_id == current_sitter.id %>
         <p class="taken"> Taken by you! </p>
         <br>
         <%= link_to 'Drop This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
