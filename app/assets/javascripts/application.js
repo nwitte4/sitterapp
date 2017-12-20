@@ -17,9 +17,14 @@
 
 // $(document).ready(function()
 //  {
-//     $('.logo .active-image').animate({
-//        marginTop: "-20px",
-//        marginLeft: "-200px",
-//      }, 1000);
-//
-//  });
+//     $('.hover-text').hover(function(){
+//       $(this).filter(':not(:animated)').animate({
+//         marginLeft:'9px'
+//       },'slow');
+// // This only fires if the row is not undergoing an animation when you mouseover it
+//     },
+//     function() {
+//       $(this).animate({
+//         marginLeft:'0px'
+//       },'slow');
+// });

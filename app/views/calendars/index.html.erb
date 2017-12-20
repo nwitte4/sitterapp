@@ -1,26 +1,26 @@
+<% @current_time = Time.new %>
+<% @today = @current_time.day %>
+<% @this_month = @current_time.month %>
 <!-- parent views -->
 <% if current_parent %>
 
 <div class="page">
 
-  <% @current_time = Time.new %>
-
   <div class="calendar">
     <%= month_calendar events: @gigs do |date, gigs| %>
-    <% @calday = date.day %>
-    <% @today = @current_time.day %>
-      <div class="cal-day <%= 'current-day' if @calday == @today %>"> <%= date.day %>
+    <% @date_day = date.day %>
+      <div class="cal-day <%= 'current-day' if @date_day == @today %> "> <%= date.day %>
         <br>
         <% gigs.each do |gig| %>
           <% if gig.sitter_id.nil? %>
             <div class="open">
-              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
+              <%= link_to gig.start_time.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% else %>
           <% @gig_sitter = Sitter.where(id: gig.sitter_id).last %>
             <div class="taken">
-              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
-              : <%= link_to @gig_sitter.email.split('@')[0], sitters_path(@gig_sitter.id)  %>
+              <%= link_to gig.start_time.strftime("%I:%M"), gig_path(gig) %>
+              - <%= link_to @gig_sitter.email.split('@')[0], sitters_path(@gig_sitter.id)  %>
             </div>
           <% end %>
         <% end %>
@@ -49,7 +49,7 @@
         <% else %>
           <% @sitters.each do |sitter| %>
             <div class='sitter-list-email'>
-              <%= link_to sitter.email, sitters_path(sitter), class: 'sitter-list-email' %>
+              <%= link_to sitter.email, sitters_path(sitter), class: 'sitter-list-email hover-text' %>
             </div>
             <% end %>
         <% end %>
@@ -67,25 +67,27 @@
     <% @current_time = Time.new %>
 
     <%= month_calendar events: @gigs do |date, gigs| %>
-      <div class="cal-day"> <%= date.day %>
+    <% @date_day = date.day %>
+      <div class="cal-day <%= 'current-day' if @date_day == @today %>"> <%= date.day %>
         <br>
         <% gigs.each do |gig| %>
-        <% @gig_parent = Parent.where(id: gig.parent_id).last.email.split('@')[0] %>
+        <% @gig_parent = Parent.where(id: gig.parent_id).last %>
+        <% @parent_email = @gig_parent.email.split('@')[0]%>
 
           <% if gig.sitter_id.nil? %>
             <div class="open">
-              <%= @gig_parent %>:
-              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
+              <%= link_to @parent_email, parents_path(@gig_parent) %> -
+              <%= link_to gig.start_time.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% elsif gig.sitter_id == current_sitter.id %>
             <div class="taken-by-you">
-              <%= @gig_parent %>:
-              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
+              <%= link_to @parent_email, parents_path(@gig_parent) %> -
+              <%= link_to gig.start_time.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% else %>
             <div class="taken">
-              <%= @gig_parent %>:
-              <%= link_to gig.start_time.localtime.strftime("%I:%M"), gig_path(gig) %>
+              <%= link_to @parent_email, parents_path(@gig_parent) %> -
+              <%= link_to gig.start_time.strftime("%I:%M"), gig_path(gig) %>
             </div>
           <% end %>
         <% end %>
@@ -99,7 +101,7 @@
         <p> No sitters yet. </p>
       <% else %>
         <% @parents.each do |parent| %>
-          <%= link_to parent.email, parents_path(parent) %>
+          <%= link_to parent.email, parents_path(parent), class: 'parent-emails' %>
           <br>
           <% end %>
       <% end %>

@@ -1,2 +1,7 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+
+<div class="request-show">
+  <h1> <%=@request.parent_email%>'s Request </h1>
+  <br>
+  <p> <%= @request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= @request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %> </p>
+  <%= link_to 'Accept Request', "/requests/#{@request.id}", method: :post %>
+</div>

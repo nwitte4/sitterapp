@@ -21,6 +21,25 @@ class GigsController < ApplicationController
     end
   end
 
+  def request_to_gig
+    @request = Request.find(params[:id])
+    parent = Parent.where(email: @request.parent_email).last
+    @gig = Gig.create(
+      parent_id: parent.id,
+      sitter_id: current_sitter.id,
+      name: nil,
+      start_time: @request.start_time,
+      end_time: @request.end_time,
+      cost: @request.cost,
+      description: 'no description',
+    )
+    if @gig.save
+      redirect_to '/'
+    else
+      redirect_to @request, notice: @gig.errors.full_messages.each
+    end
+  end
+
 
   def add_sitter_to_gig
     gig = Gig.find(params[:id])

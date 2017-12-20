@@ -29,7 +29,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  transform: scale(1.1);
+  transform: rotate(8deg);
 }
 
 a:visited{
@@ -135,6 +135,10 @@ nav {
   background-color: yellow;
 }
 
+.not-current-month {
+  background-color: grey;
+}
+
 .cal-day:hover {
   background-color: #77C9D4;
   transform: scale(1.4);
@@ -221,6 +225,13 @@ nav {
 .sitter-list-email {
   font-family: 'Gloria Hallelujah', cursive;
   letter-spacing: .2em;
+  transition: color .5s, transform .5s
+}
+
+.sitter-list-email:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+  color: lightgrey;
 }
 
 .submit-button {
@@ -236,10 +247,21 @@ nav {
 }
 
 .taken-by-you {
-  background-color: #1286b5;
+  background-color: #c40f64;
   border: 1px solid black;
   padding: 2px;
   margin: 2px;
+}
+
+.parent-emails {
+  /*border: 1px solid black;*/
+  text-align: center;
+  margin: 0 auto;
+}
+
+.parent-emails:hover {
+  text-decoration: none;
+  transform: scale(1.1)
 }
 
 /*parent index page*/

@@ -1,10 +1,13 @@
 <div class="gig-show" id="gig-show">
-  <h2><%= @gig.name.capitalize %>: <small> <%= @gig.start_time.localtime.strftime("%B %d") %> </small></h2>
+  <h2><%= @gig.name.nil? ? 'Gig' : @gig.name.capitalize %> :
+    <small> <%= @gig.start_time.localtime.strftime("%B %d") %>
+    </small>
+  </h2>
   <div class="gig-info">
     <h4> From: </h4>
-    <p> <%= @gig.start_time.localtime.strftime("%I:%M %p") %></p>
+    <p> <%= @gig.start_time.strftime("%I:%M %p") %></p>
     <h4> Until: </h4>
-    <p><%= @gig.end_time.localtime.strftime("%I:%M %p") %></p>
+    <p><%= @gig.end_time.strftime("%I:%M %p") %></p>
     <h4> Description: </h4>
     <% @gig.description.nil? ? @gig.description = 'no details' : @gig.description %>
     <p><%= @gig.description %></p>

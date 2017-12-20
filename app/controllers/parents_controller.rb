@@ -9,8 +9,14 @@ class ParentsController < ApplicationController
   end
 
   def update
-    @parent = current_parent
-    @sitter = Sitter.find(params[:parent][:sitter_ids])
+    if parent_signed_in?
+      @parent = current_parent
+      @sitter = Sitter.find(params[:parent][:sitter_ids])
+    else
+      @parent = Parent.find(params[:id])
+      @sitter = current_sitter
+    end
+
     @parent.sitters << @sitter
     if @parent.save
       redirect_to '/'
@@ -21,8 +27,13 @@ class ParentsController < ApplicationController
   end
 
   def remove_sitter_from_parent
-    parent = current_parent
-    sitter = Sitter.find(params[:id])
+    if parent_signed_in?
+      parent = current_parent
+      sitter = Sitter.find(params[:id])
+    else
+      parent = Parent.find(params[:id])
+      sitter = current_sitter
+    end
 
     if sitter
       parent.sitters.delete(sitter)
