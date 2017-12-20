@@ -29,6 +29,11 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    request = Request.find(params[:id])
+    sitter = Sitter.where(email: request.sitter_email.last)
+    request.destroy
+
+    redirect_to '/'
   end
 
   private

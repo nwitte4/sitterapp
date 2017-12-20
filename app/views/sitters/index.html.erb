@@ -20,6 +20,7 @@
           <%= request.start_time.strftime("%B %d %I:%M %p") %> - <%= request.end_time.strftime("%I:%M %p") %>
           - $<%= request.cost %>
           <br>
+          <%= link_to 'Delete Request', request_path(request), method: :delete, data: { confirm: "Are you sure you don't need them anymore? "} %>
         <% end %>
     <% end %>
   </div>
