@@ -10,13 +10,13 @@
       <p> You've been requested for: </p>
       <% @requests.each do |request| %>
         <br>
-        <%= request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
+        <%= request.start_time.strftime("%B %d, %Y %I:%M %p") %> - <%= request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
         - $<%= request.cost %>
         <br>
         <% @parent = Parent.where(email: request.parent_email).last %>
         By: <%= link_to @parent.email, parents_path(@parent.id)  %>
         <br>
-        <%= link_to 'Accept Request', "/sitters/#{@sitter.id}", method: :post  %>
+        <%= link_to 'View Request', request_path(request)  %>
         <br>
       <% end %>
     <% end %>

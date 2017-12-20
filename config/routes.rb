@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   registrations: 'sitters/registrations'
 }
 
-  post 'parents/:id', to: 'parents#update'
+  # post 'parents/:id', to: 'parents#update'
 
   resources :calendars
   resources :parents
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :requests
 
   post '/sitters/:id', to: 'parents#remove_sitter_from_parent'
+  post '/parents/:id', to: 'parents#remove_sitter_from_parent'
+  post '/requests/:id', to: 'gigs#request_to_gig'
   post '/gigs/gigs/:id', to: 'gigs#add_sitter_to_gig'
 
   root to: 'calendars#index'

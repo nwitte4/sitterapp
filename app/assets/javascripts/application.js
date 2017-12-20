@@ -10,6 +10,21 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).ready(function()
+//  {
+//     $('.hover-text').hover(function(){
+//       $(this).filter(':not(:animated)').animate({
+//         marginLeft:'9px'
+//       },'slow');
+// // This only fires if the row is not undergoing an animation when you mouseover it
+//     },
+//     function() {
+//       $(this).animate({
+//         marginLeft:'0px'
+//       },'slow');
+// });

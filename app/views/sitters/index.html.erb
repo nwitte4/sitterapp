@@ -1,9 +1,9 @@
 <div class="sitter-index">
 
   <div class="sitter-info">
-    <h4>Sitter Info</h4>
+    <h3>Sitter Info</h3>
     <% email = @sitter.email.split('@')[0] %>
-    <h5> Email: <%= @sitter.email %> </h5>
+    <h4> Email: <%= @sitter.email %> </h4>
   </div>
 
   <div class="remove-sitter-option">
@@ -17,7 +17,7 @@
       <h4> Requested for: </h4>
         <% @requests.each do |request| %>
           <br>
-          <%= request.start_time.localtime.strftime("%B %d %I:%M %p") %> - <%= request.end_time.localtime.strftime("%I:%M %p") %>
+          <%= request.start_time.strftime("%B %d %I:%M %p") %> - <%= request.end_time.strftime("%I:%M %p") %>
           - $<%= request.cost %>
           <br>
         <% end %>
