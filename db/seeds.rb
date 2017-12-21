@@ -19,6 +19,36 @@ test_sitter = Sitter.create(
   password: '123456'
 )
 
+babysitting_time = Gig.create(
+  name: "Date Night"
+  start_time: Time.now + 1.hours,
+  end_time: Time.now + 3.hours,
+  description: "we're going to dinner and a movie, order whatever you want for you and the kids and call me if you need anything!"
+  cost: 15,
+  parent_id: test_parent.id,
+  sitter_id: test_sitter.id
+)
+
+babysitting_time_2 = Gig.create(
+  name: "Concert"
+  start_time: Time.now + 25.hours,
+  end_time: Time.now + 27.hours,
+  description: 'going to see a show, be back around 11pm, tuck them in around 9 please!'
+  cost: 15,
+  parent_id: test_parent.id,
+  sitter_id: test_sitter.id
+)
+
+babysitting_time_3 = Gig.create(
+  name: "Errands"
+  start_time: Time.now + 25.hours,
+  end_time: Time.now + 27.hours,
+  description: "need to run some errands, shouldn't be longer than 2 hours but if I am I'll pay you for the extra time when I'm back."
+  cost: 15,
+  parent_id: test_parent.id,
+  sitter_id: test_sitter.id
+)
+
 10.times do
   sitter = Sitter.create(
     email: Faker::Internet.email,
