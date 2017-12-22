@@ -37,7 +37,7 @@ a:visited{
 }
 
 body {
-  background: url("backgroundimg.jpg");
+  background: url(../images/backgroundimg.jpg);
 }
 
 h3, h4, h5, div {
@@ -120,7 +120,7 @@ nav {
   border: 1px solid black;
   margin: 0 auto;
   transition: background-color .5s, transform .5s;
-  background: url("calbackground.jpg") no-repeat;
+  background: url(../images/calbackground.jpg) no-repeat;
   background-size: contain;
   background-color: white;
   /*text-align: center;*/
