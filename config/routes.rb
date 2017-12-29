@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :sitters
   resources :gigs
   resources :requests
+  resources :notes
 
   post '/sitters/:id', to: 'parents#remove_sitter_from_parent'
   post '/parents/:id', to: 'parents#remove_sitter_from_parent'

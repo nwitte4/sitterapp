@@ -14,6 +14,9 @@ class GigsController < ApplicationController
   def create
     @gig = Gig.create(gig_params)
     @gig.parent_id = current_parent.id
+    @gig.description = 'No details' if @gig.description == ""
+    @gig.name = 'Babysitting' if @gig.name == ""
+
     if @gig.save
       redirect_to @gig
     else
@@ -31,7 +34,7 @@ class GigsController < ApplicationController
       start_time: @request.start_time,
       end_time: @request.end_time,
       cost: @request.cost,
-      description: 'no description',
+      description: 'No details',
     )
     if @gig.save
       redirect_to '/'

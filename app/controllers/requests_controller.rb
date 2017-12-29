@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
     @request = Request.create(request_params)
     @request.parent_email = current_parent.email
     @request.sitter_email = params[:request][:sitter_email]
+    @request.description = 'No details' if @request.description == ""
 
     if @request.save
       redirect_to '/'
@@ -39,7 +40,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:sitter_email, :parent_email, :start_time, :end_time, :cost)
+    params.require(:request).permit(:sitter_email, :parent_email, :start_time, :end_time, :cost, :description)
   end
 
 end
