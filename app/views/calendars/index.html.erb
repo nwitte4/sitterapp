@@ -79,7 +79,7 @@
 
     <%= month_calendar events: @gigs do |date, gigs| %>
     <% @date_day = date.day %>
-      <div class="cal-day <%= 'current-day' if @date_day == @today %>"> <%= date.day %>
+      <div class="cal-day <%= 'current-day' if @date_day == @today && @date_month == @this_month %> <%= 'not-current-month' if @date_month != @this_month %> "> <%= date.day %>
         <br>
         <% gigs.each do |gig| %>
         <% @gig_parent = Parent.where(id: gig.parent_id).last %>
