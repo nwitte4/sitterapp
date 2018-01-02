@@ -34,20 +34,20 @@
       Status:
     </h3>
     <% if @gig.sitter_id.nil? %>
-    <p class="open">
+    <p class="open gig-status">
       Open
     </p>
     <br>
     <%= link_to 'Claim This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
   <% else %>
     <% if current_parent %>
-    <p class="taken">
+    <p class="taken gig-status">
       Taken by
       <%= Sitter.where(id: @gig.sitter_id).last.email %>
     </p>
     <br>
     <% elsif @gig.sitter_id == current_sitter.id %>
-    <p class="taken">
+    <p class="taken gig-status">
       Taken by you!
     </p>
     <br>

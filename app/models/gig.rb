@@ -1,7 +1,5 @@
 class Gig < ApplicationRecord
   validates :cost, presence: true
-  validates :start_time, uniqueness: { scope: :end_time, message: "Start time and end time must be different." }
-
 
   validate :start_must_be_before_end_time
 

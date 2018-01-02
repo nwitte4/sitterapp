@@ -2,6 +2,9 @@
 <div class="request-show">
   <h1> <%=@request.parent_email%>'s Request </h1>
   <br>
-  <p> <%= @request.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> - <%= @request.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %> </p>
-  <%= link_to 'Accept Request', "/requests/#{@request.id}", method: :post %>
+  <p> <%= @request.start_time.strftime("%B %d, %Y %I:%M %p") %> - <%= @request.end_time.strftime("%B %d, %Y %I:%M %p") %> </p>
+  <br>
+  <%= link_to 'Accept Request', "/requests/#{@request.id}", method: :post, class: 'accept-request' %>
+  <%= link_to 'Deny Request', request_path(@request), class:"deny-request", method: :delete, data: { confirm: "Are you sure? "} %>
+
 </div>

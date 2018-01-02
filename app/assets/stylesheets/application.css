@@ -140,7 +140,7 @@ nav {
 
 .current-day {
   color: yellow;
-  font-size: 2em;
+  font-size: 1em;
   text-shadow: 1px 1px 2px black;
 }
 
@@ -178,6 +178,7 @@ nav {
 .open {
   background-color: #a7efbe;
   border: 1px solid black;
+  font-size: .45em;
   padding: 2px;
   margin: 2px;
 }
@@ -185,8 +186,13 @@ nav {
 .taken {
   background-color: #ce5656;
   border: 1px solid black;
+  font-size: .45em;
   padding: 2px;
   margin: 2px;
+}
+
+.gig-status {
+  font-size: 1em;
 }
 
 .babysitting-actions {
@@ -354,7 +360,15 @@ nav {
 .sitter-show {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 2fr;
+}
+
+.request {
+  background-color: lightgrey;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bolder;
+  opacity: .9;
 }
 
 
@@ -395,4 +409,22 @@ nav {
   background-color: #9ebced;
   border-radius: 20px;
   margin-bottom: 1em;
+}
+
+/*request show*/
+
+.request-show {
+  text-align: center;
+  border: 2px solid #1286b5;
+  padding: 2em;
+  margin: 1em;
+}
+
+.accept-request {
+  background-color: #a7efbe;
+  padding: 1em;
+}
+.deny-request {
+  background-color: #ce5656;
+  padding: 1em;
 }

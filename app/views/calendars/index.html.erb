@@ -14,7 +14,7 @@
         <br>
         <% gigs.each do |gig| %>
           <% if gig.sitter_id.nil? %>
-            <div class="open">
+            <div class="open gig-status">
               <% @gig_time = gig.start_time.strftime("%I:%M") %>
               <% if @gig_time.split('')[0] == "0" %>
                 <%= link_to @gig_time.slice(1,@gig_time.length), gig_path(gig) %>
@@ -24,7 +24,7 @@
             </div>
           <% else %>
           <% @gig_sitter = Sitter.where(id: gig.sitter_id).last %>
-            <div class="taken">
+            <div class="taken gig-status">
               <% @gig_time = gig.start_time.strftime("%I:%M") %>
               <% if @gig_time.split('')[0] == "0" %>
                 <%= link_to @gig_time.slice(1,@gig_time.length), gig_path(gig) %>
@@ -87,7 +87,7 @@
         <% @parent_email = @gig_parent.email.split('@')[0]%>
         <% @gig_time = gig.start_time.strftime("%I:%M") %>
           <% if gig.sitter_id.nil? %>
-            <div class="open">
+            <div class="open gig-status">
               <%= link_to @parent_email, parents_path(@gig_parent) %> -
               <% if @gig_time.split('')[0] == "0" %>
                 <%= link_to @gig_time.slice(1,@gig_time.length), gig_path(gig) %>
@@ -105,7 +105,7 @@
               <% end %>
             </div>
           <% else %>
-            <div class="taken">
+            <div class="taken gig-status">
               <%= link_to @parent_email, parents_path(@gig_parent) %> -
               <% if @gig_time.split('')[0] == "0" %>
                 <%= link_to @gig_time.slice(1,@gig_time.length), gig_path(gig) %>
