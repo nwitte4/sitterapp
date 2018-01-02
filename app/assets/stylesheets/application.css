@@ -181,6 +181,10 @@ nav {
   font-size: .45em;
   padding: 2px;
   margin: 2px;
+  /*white-space: nowrap;*/
+  text-overflow: clip;
+  display: block;
+  overflow: scroll;
 }
 
 .taken {
@@ -189,6 +193,10 @@ nav {
   font-size: .45em;
   padding: 2px;
   margin: 2px;
+  /*white-space: nowrap;*/
+  text-overflow: clip;
+  display: block;
+  overflow: scroll;
 }
 
 .gig-status {
@@ -268,6 +276,10 @@ nav {
   border: 1px solid black;
   padding: 2px;
   margin: 2px;
+  /*white-space: nowrap;*/
+  text-overflow: clip;
+  display: block;
+  overflow: scroll;
 }
 
 .parent-emails {

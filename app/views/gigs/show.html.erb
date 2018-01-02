@@ -4,9 +4,10 @@
       <%= @gig.start_time.localtime.strftime("%B %d") %>
     </small>
   </h2>
-  <% if current_parent %>
-  <%= link_to ' - Edit Details', edit_gig_path(@gig) %>
-  <% end %>
+  <%= link_to ' - Edit Details', edit_gig_path(@gig) if current_parent %>
+  <%= link_to 'Claim This Gig?', "gigs/#{@gig.id}", method: :post if current_sitter %>
+  <br>
+  <br>
   <div class="gig-info">
     <h3>
       From:
@@ -38,7 +39,6 @@
       Open
     </p>
     <br>
-    <%= link_to 'Claim This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
   <% else %>
     <% if current_parent %>
     <p class="taken gig-status">
