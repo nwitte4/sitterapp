@@ -61,9 +61,16 @@ class GigsController < ApplicationController
   end
 
   def edit
+    @gig = Gig.find(params[:id])
   end
 
   def update
+    @gig = Gig.find(params[:id])
+    if @gig.update(gig_params)
+      redirect_to @gig
+    else
+      render 'edit'
+    end
   end
 
   def destroy

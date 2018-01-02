@@ -9,11 +9,11 @@
     <br>
     <%= f.label "From" %>
     <br>
-    <%= f.datetime_select :start_time, :default => Time.now, ampm: true, use_short_month: true %>
+    <%= f.datetime_select :start_time, :default => Time.now, ampm: true, use_short_month: true, discard_year: true %>
     <br>
     <%= f.label "Until" %>
     <br>
-    <%= f.datetime_select :end_time, :default => Time.now, ampm: true, use_short_month: true %>
+    <%= f.datetime_select :end_time, :default => Time.now, ampm: true, use_short_month: true, discard_year: true %>
     <br>
     <%= f.label "Description", class: 'form-label' %>
     <br>

@@ -1,42 +1,63 @@
 <div class="gig-show" id="gig-show">
-  <h2><%= @gig.name.nil? ? 'Gig' : @gig.name.capitalize %> :
-    <small> <%= @gig.start_time.localtime.strftime("%B %d") %>
+  <h2><%= @gig.name.nil? ? 'Gig: ' : @gig.name.capitalize + ': ' %>
+    <small>
+      <%= @gig.start_time.localtime.strftime("%B %d") %>
     </small>
   </h2>
+  <% if current_parent %>
+  <%= link_to ' - Edit Details', edit_gig_path(@gig) %>
+  <% end %>
   <div class="gig-info">
-    <h4> From: </h4>
-    <p> <%= @gig.start_time.strftime("%I:%M %p") %></p>
-    <h4> Until: </h4>
-    <p><%= @gig.end_time.strftime("%I:%M %p") %></p>
-    <h4> Description: </h4>
+    <h3>
+      From:
+    </h3>
+    <p class="gig-info-items">
+      <%= @gig.start_time.strftime("%I:%M %p") %></p>
+    <h3>
+      Until:
+    </h3>
+    <p class="gig-info-items"><%= @gig.end_time.strftime("%I:%M %p") %></p>
+    <h3>
+      Description:
+    </h3>
     <% @gig.description.nil? ? @gig.description = 'no details' : @gig.description %>
-    <p><%= @gig.description %></p>
-    <h4> Payment: </h4>
-    <p> $<%= @gig.cost %></p>
+    <p class="gig-info-items"><%= @gig.description %></p>
+    <h3>
+      Payment:
+    </h3>
+    <p class="gig-info-items">
+      $<%= @gig.cost %></p>
   </div>
 
   <div class="status">
-    <h4> Status: </h4>
+    <h3>
+      Status:
+    </h3>
     <% if @gig.sitter_id.nil? %>
-      <p class="open"> Open </p>
-      <br>
-      <%= link_to 'Claim This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
-    <% else %>
-      <% if current_parent %>
-        <p class="taken"> Taken by <%= Sitter.where(id: @gig.sitter_id).last.email %> </p>
-        <br>
-      <% elsif @gig.sitter_id == current_sitter.id %>
-        <p class="taken"> Taken by you! </p>
-        <br>
-        <%= link_to 'Drop This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
-      <% else %>
-        <p class="taken"> Taken </p>
-      <% end %>
+    <p class="open">
+      Open
+    </p>
+    <br>
+    <%= link_to 'Claim This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
+  <% else %>
+    <% if current_parent %>
+    <p class="taken">
+      Taken by
+      <%= Sitter.where(id: @gig.sitter_id).last.email %>
+    </p>
+    <br>
+    <% elsif @gig.sitter_id == current_sitter.id %>
+    <p class="taken">
+      Taken by you!
+    </p>
+    <br>
+    <%= link_to 'Drop This Gig', "gigs/#{@gig.id}", method: :post if current_sitter %>
+  <% else %>
+    <p class="taken">
+      Taken
+    </p>
+    <% end %>
     <% end %>
   </div>
-
-
-  <% if current_parent %>
-    <%= link_to 'Delete This Gig', gig_path(@gig), method: :delete, data: { confirm: "Are you sure you don't need this anymore?"}%>
-  <% end %>
+  <%= link_to 'Delete This Gig', gig_path(@gig), class: 'remove-button', method: :delete, data: { confirm: "Are you sure you don't need this anymore?"}%>
 </div>

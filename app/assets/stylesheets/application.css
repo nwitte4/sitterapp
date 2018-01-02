@@ -247,6 +247,7 @@ nav {
 .submit-button {
   background-color: lightgrey;
   padding: 10px;
+  margin: 2px;
   border-radius: 7px;
   font-size: 10pt;
   text-align: center;
@@ -359,11 +360,20 @@ nav {
 /*gig show page*/
 
 .gig-show {
-
+  margin-bottom: 1em;
 }
 
 .gig-info {
 
+}
+
+.gig-info-items {
+  background-color: lightgrey;
+  padding: 1em;
+  margin-right: 60%;
+  text-align: center;
+  border: 1px solid black;
+  margin-left: 3%;
 }
 
 .status {
