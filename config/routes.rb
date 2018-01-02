@@ -1,20 +1,4 @@
 Rails.application.routes.draw do
-  get 'requests/index'
-
-  get 'requests/show'
-
-  get 'requests/new'
-
-  get 'requests/create'
-
-  get 'requests/update'
-
-  get 'requests/edit'
-
-  get 'requests/destroy'
-
-  # devise_for :sitters, path: 'sitters'
-  # devise_for :parents, path: 'parents'
 
   devise_for :parents, controllers: {
   sessions: 'parents/sessions',

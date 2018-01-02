@@ -12,7 +12,7 @@ class ParentsController < ApplicationController
   def update
     if parent_signed_in?
       @parent = current_parent
-      @sitter = Sitter.find(params[:parent][:sitter_ids])
+      @sitter = Sitter.where(email: params[:parent][:q])
     else
       @parent = Parent.find(params[:id])
       @sitter = current_sitter

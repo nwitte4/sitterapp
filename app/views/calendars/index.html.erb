@@ -122,7 +122,7 @@
     <div class="client-box">
       <h4>Your clients: </h4>
       <% if @parents.empty? %>
-        <p> No sitters yet. </p>
+        <p> No parents yet. </p>
       <% else %>
         <% @parents.each do |parent| %>
           <%= link_to parent.email, parents_path(parent), class: 'parent-emails' %>
