@@ -6,6 +6,7 @@ class ParentsController < ApplicationController
 
   def show
     @parent = Parent.find(params[:id])
+    @notes = Note.where(parent_id: current_parent.id)
   end
 
   def update

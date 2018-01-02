@@ -132,7 +132,9 @@ nav {
 }
 
 .current-day {
-  background-color: yellow;
+  color: yellow;
+  font-size: 2em;
+  text-shadow: 1px 1px 2px black;
 }
 
 .not-current-month {
@@ -169,6 +171,7 @@ nav {
 .open {
   background-color: #a7efbe;
   border: 1px solid black;
+  font-size: .45em;
   padding: 2px;
   margin: 2px;
 }
@@ -277,7 +280,7 @@ nav {
 
 }
 
-.add-sitter-form {
+.show-sitter-form {
   margin-left: 10vw;
   margin-right: 10vw;
   border: 2px solid #1286b5;

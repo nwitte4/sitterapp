@@ -3,7 +3,15 @@
   <br>
   <h4>Email: <%= @parent.email %> </h4>
   <br>
-  <div class="add-sitter-form">
+  <div class="show-sitter-form">
+    <h3>Past Babysitter Notes:</h3>
+    <% @notes.each do |note| %>
+    <% @sitter = Sitter.where(id: note.sitter_id) %>
+    <%= @sitter.last.email.split('@')[0] %>
+    : <%= note.text %>
+    <% end %>
+  </div>
+  <div class="show-sitter-form">
     <h3>Add Sitters</h3>
     <div class="parent-show-sitter-form">
       <%= form_with(model: @parent, local: true) do |f| %>
