@@ -6,7 +6,7 @@ class ParentsController < ApplicationController
 
   def show
     @parent = Parent.find(params[:id])
-    @notes = Note.where(parent_id: current_parent.id)
+    @notes = Note.where(parent_id: current_parent.id).order(:sitter_id)
   end
 
   def update
@@ -19,11 +19,11 @@ class ParentsController < ApplicationController
     end
 
     @parent.sitters << @sitter
-    if @parent.save
+
+    if Sitter.pluck(:id).include?(@sitter.ids)
       redirect_to '/'
     else
-      flash[:notice] = 'Did not work'
-      redirect_to '/'
+      redirect_to @parent, notice: 'No sitters match this email. Please try again!'
     end
   end
 

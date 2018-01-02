@@ -30,10 +30,10 @@
     <%= form_with(model: Request.new, local: true) do |f| %>
     <br>
     <%= f.label "From", class: 'form-label' %>
-    <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
+    <%= f.datetime_select :start_time, :default => Time.now, ampm: true, discard_year: true %>
     <br>
     <%= f.label "Until", class: 'form-label' %>
-    <%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
+    <%= f.datetime_select :end_time, :default => Time.now, ampm: true, discard_year: true %>
     <br>
     <%= f.label "Cost", class: 'form-label' %>
     <span>$<%= f.number_field :cost, :class=> "text-area" %></span>
@@ -46,9 +46,9 @@
   <div>
     <h3> Notes: </h3>
       <% @notes.each do |note| %>
-      <ul>
+      <ul class="note-list">
         <%= note.text %>
-        <%= link_to 'Delete', note_path(note), method: :delete, data: { confirm: "Are you sure you don't need this anymore?"} if note.parent_id == current_parent.id %> </button>
+        <%= link_to '- remove', note_path(note), class: 'remove-note', method: :delete, data: { confirm: "Are you sure you don't need this anymore?"} if note.parent_id == current_parent.id %> </button>
       </ul>
       <% end %>
   </div>
@@ -57,7 +57,7 @@
     <h5> Notes are anonymous, but please only leave helpful notes!</h5>
     <%= form_with(model: Note.new, local: true) do |f| %>
     <%= f.hidden_field :sitter_id, :value => @sitter.id %>
-    <%= f.text_area(:text, size: '60x12', placeholder: "Add a note about this sitter.", :class=> "text-area") %>
+    <%= f.text_area(:text, size: '70x12', placeholder: "Add a note about this sitter.", :class=> "text-area") %>
     <%= f.submit "Add Note", :class=> "submit-button"  %>
     <% end %>
     <br>

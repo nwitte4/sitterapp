@@ -36,11 +36,18 @@ a:visited{
   color: black;
 }
 
+.notice {
+  margin: 1em;
+  text-align: center;
+  font-size: 1.5em;
+  color: #ce5656;
+}
+
 body {
   background: url("https://i.imgur.com/O4aiREJ.jpg");
 }
 
-h3, h4, h5, div {
+h3, h4, h5, div, ul, form {
   margin-left: 1vw;
   letter-spacing: 1px;
 }
@@ -171,7 +178,6 @@ nav {
 .open {
   background-color: #a7efbe;
   border: 1px solid black;
-  font-size: .45em;
   padding: 2px;
   margin: 2px;
 }
@@ -333,6 +339,13 @@ nav {
   margin-right: 10px;
 }
 
+.note-list {
+  margin: 1em;
+}
+
+.remove-note {
+  color: #ce5656;
+}
 
 /*sitter show page*/
 
