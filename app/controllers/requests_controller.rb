@@ -15,11 +15,12 @@ class RequestsController < ApplicationController
     @request.parent_email = current_parent.email
     @request.sitter_email = params[:request][:sitter_email]
     @request.description = 'No details' if @request.description == ""
+    @sitter = Sitter.where(email: params[:request][:sitter_email])
 
     if @request.save
       redirect_to '/'
     else
-      redirect_to @sitter
+      redirect_to @sitter, notice: @request.errors.full_messages.each
     end
   end
 

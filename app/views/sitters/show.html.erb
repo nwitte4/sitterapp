@@ -1,8 +1,8 @@
 <div class="sitter-show">
 
   <h3>Welcome to Your Sitter Profile</h3>
-  <div></div>
-  <h5> Email: <%= @sitter.email %> </h5>
+
+  <h4> Email: <%= @sitter.email %> </h4>
   <div class="requested-sitters">
     <% if @requests.empty?%>
       <p> You don't have any requests currently, <%=@sitter.email.split('@')[0]%> </p>

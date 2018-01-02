@@ -330,7 +330,8 @@ nav {
 
 .requested-sitters {
   border: 2px solid #1286b5;
-  padding-top: 25px;
+  padding: 10px;
+  margin-right: 10px;
   text-align: center;
 }
 
