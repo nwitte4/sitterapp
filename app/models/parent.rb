@@ -3,8 +3,8 @@ class Parent < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-has_and_belongs_to_many :sitters
-after_create :build_calendar
+  has_and_belongs_to_many :sitters
+  after_create :build_calendar
 
   def build_calendar
     Calendar.create(user_id: self.id)
