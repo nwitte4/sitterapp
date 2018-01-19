@@ -20,4 +20,6 @@
 /node_modules
 /yarn-error.log
 
+secrets.yml
+
 .byebug_history

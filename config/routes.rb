@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   registrations: 'sitters/registrations'
 }
 
-  # post 'parents/:id', to: 'parents#update'
-
   resources :calendars
   resources :parents
   resources :sitters
@@ -25,9 +23,4 @@ Rails.application.routes.draw do
 
   root to: 'calendars#index'
 
-#   devise_for :sitters, path: 'sitters'
-# # eg. http://localhost:3000/users/sign_in
-  # devise_for :parents, path: 'parents'
-# # eg. http://localhost:3000/admins/sign_in
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
