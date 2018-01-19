@@ -67,6 +67,14 @@ button:hover {
   transform: scale(1.1);
 }
 
+.sign-in-page {
+  text-align: center;
+  border: 1px solid #1286b5;
+  margin-left: 40%;
+  margin-right: 40%;
+  padding: 2em;
+}
+
 nav {
   margin: 1em;
   padding: 5px;
