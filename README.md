@@ -1,6 +1,28 @@
 # README
 
-### Welcome to SitterSetter
+## Welcome to SitterSetter
+
+### SETUP
+
+```
+git clone https://github.com/nwitte4/sitterapp.git
+```
+
+```
+cd cal
+```
+
+```
+bundle install
+```
+
+```
+rails db:migrate
+```
+
+then navigate to http://localhost:3000
+
+### USAGE
 
 Check out the demo here: [Demo Me](https://secret-everglades-72811.herokuapp.com/)
 
