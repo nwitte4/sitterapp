@@ -319,8 +319,12 @@ nav {
   grid-template-columns: repeat(2,1fr);
 }
 
-.parent-show-profile-info {
-  padding: 1em;
+.parent-show-info {
+  border: 2px solid #1286b5;
+  background-color: lightgrey;
+  padding: 25px;
+  text-align: center;
+  vertical-align: middle !important;
 }
 
 .show-sitter-form {
@@ -331,6 +335,10 @@ nav {
   padding: 25px;
   text-align: center;
   font-size: 1.5em;
+}
+
+.left-align {
+  text-align: left;
 }
 
 .parent-show-sitter-form {

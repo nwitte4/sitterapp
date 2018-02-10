@@ -1,34 +1,42 @@
-<div class="parent-show">
-  <h3>Welcome to Your Profile, <%= @parent.first_name %></h3>
-  <br>
-  <div class="parent-show-profile-info">
-    <h3>Info:</h3>
-    <h4>Email: <%= @parent.email %> </h4>
-    <h4>Full Name: <%= @parent.first_name %> <%= @parent.last_name %> </h4>
-    <h4>Number of Kids: <%= @parent.number_of_children %> </h4>
-  </div>
-  <br>
+<h3 style="text-align: center">Welcome to Your Profile, <%= @parent.first_name %></h3>
 
-  <div class="show-sitter-form">
-    <h3>Past Babysitter Notes:</h3>
-    <% @notes.each do |note| %>
-    <ul>
-      <% @sitter = Sitter.where(id: note.sitter_id) %>
-      <%= @sitter.last.email.split('@')[0] %>
-      : <%= note.text %>
-      <%= link_to ' x ', note_path(note), class: 'remove-note', method: :delete %> </button>
-    </ul>
-    <% end %>
+<div class="parent-show">
+
+  <div class="parent-show-info">
+    <h3>Email:</h3>
+    <p><%= @parent.email %></p>
+    <h3>Full Name: </h3>
+    <p><%= @parent.first_name %> <%= @parent.last_name %> </p>
+    <h3>Number of Kids:</h3>
+    <p><%= @parent.number_of_children %> </p>
+    <%= link_to 'Edit Info'%>
   </div>
-  <div class="show-sitter-form">
-    <h3>Add New Sitter</h3>
-    <h6>Search by email:</h6>
-    <div class="parent-show-sitter-form">
-      <%= form_with(model: @parent, local: true) do |f| %>
-        <%= f.hidden_field :parent, :value => @parent %>
-        <%= f.text_field :q %>
-        <%= f.submit "Search" %>
+
+  <div>
+    <div class="show-sitter-form">
+      <h3>Past Babysitter Notes:</h3>
+      <% @notes.each do |note| %>
+      <ul>
+        <% @sitter = Sitter.where(id: note.sitter_id) %>
+        <%= @sitter.last.email.split('@')[0] %>
+        : <%= note.text %>
+        <%= link_to ' x ', note_path(note), class: 'remove-note', method: :delete %> </button>
+      </ul>
       <% end %>
     </div>
+    <div class="show-sitter-form">
+      <h3>Add New Sitter</h3>
+      <h6>Search by email:</h6>
+      <div class="parent-show-sitter-form">
+        <%= form_with(model: @parent, local: true) do |f| %>
+          <%= f.hidden_field :parent, :value => @parent %>
+          <%= f.text_field :q %>
+          <%= f.submit "Search" %>
+        <% end %>
+      </div>
+    </div>
   </div>
+
+
+
 </div>
