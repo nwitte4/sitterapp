@@ -397,7 +397,8 @@ nav {
 .sitter-show {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 2fr;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1em;
 }
 
 .request {

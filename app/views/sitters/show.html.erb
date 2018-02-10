@@ -1,9 +1,24 @@
 <div class="sitter-show">
 
-  <h3>Welcome to Your Sitter Profile</h3>
+  <h3>Welcome to Your Sitter Profile, <%= @sitter.first_name %></h3>
 
   <h4> Email: <%= @sitter.email %> </h4>
+
   <div class="requested-sitters">
+  <h4>Recent Gigs:</h4>
+    <% if @gigs.empty?%>
+      <p> You haven't had any recent babysitting jobs </p>
+    <% else %>
+      <% @gigs.each do |gig| %>
+        <ul>
+          <%= gig.start_time.strftime("%B %d @ %I:%M %p") %> for <%= Parent.where(id: gig.parent_id).last.first_name %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="requested-sitters">
+    <h4>Requests:</h4>
     <% if @requests.empty?%>
       <p> You don't have any requests currently, <%=@sitter.email.split('@')[0]%> </p>
     <% else %>
