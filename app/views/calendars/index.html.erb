@@ -40,33 +40,30 @@
     <% end %>
   </div>
 
-  <div class="babysitting-actions">
-    <p> <%= link_to 'Add Babysitting Gig', new_gig_path, class: 'babysitter-action-buttons' %> </p>
-
-    <p> <%= link_to 'Add New Sitter', @parent, class: 'babysitter-action-buttons' %> </p>
-
-    <p> <%= link_to 'View My Profile', parent_path(@parent), class: 'babysitter-action-buttons' %> </p>
-
+  <div class="sitter-box">
+    <br>
+    <div class="client-box">
+        <button class="babysitter-button" style="border:1px solid black; background-color: #c40f64;"><%= link_to 'Add Babysitting Gig', new_gig_path %></button>
+        <button class="babysitter-button" style="border:1px solid black; background-color: #c40f64;"><%= link_to 'Add New Sitter', @parent %> </button>
+        <button class="babysitter-button" style="border:1px solid black; background-color: #c40f64;"><%= link_to 'View My Profile', parent_path(@parent) %></button>
+        <br>
+      <h3>Your babysitters:</h3>
+        <div class="babysitter-list">
+          <% if @sitters.empty? %>
+            <p> No sitters yet. </p>
+          <% else %>
+            <% @sitters.each do |sitter| %>
+              <ul>
+                <%= link_to sitter.email, sitters_path(sitter) %>
+              </ul>
+              <% end %>
+          <% end %>
+        </div>
+    </div>
   </div>
+
 </div>
 
-<div class="sitter-box">
-  <br>
-  <div class="client-box">
-    <h3>Your babysitters:</h3>
-      <div class="babysitter-list">
-        <% if @sitters.empty? %>
-          <p> No sitters yet. </p>
-        <% else %>
-          <% @sitters.each do |sitter| %>
-            <div class='sitter-list-email'>
-              <%= link_to sitter.email, sitters_path(sitter), class: 'sitter-list-email hover-text' %>
-            </div>
-            <% end %>
-        <% end %>
-      </div>
-  </div>
-</div>
 
 <% else %>
 

@@ -236,20 +236,6 @@ nav {
   margin-top: 22vh;
 }
 
-.babysitter-action-buttons {
-  padding: 2em;
-  background-color: #c40f64;
-  border: 1px solid #c40f64;
-  border-radius: 4px;
-  transition: background-color 1s;
-  font-family: 'Gloria Hallelujah', cursive;
-}
-
-.babysitter-action-buttons:hover {
-  background-color: white;
-  text-decoration: none;
-}
-
 .sitter-box {
   display: inline;
 }
@@ -267,7 +253,7 @@ nav {
   display: grid;
   margin: 2vw;
   grid-gap: 1em;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(2,1fr);
   font-family: 'Gloria Hallelujah', cursive;
 }
 
