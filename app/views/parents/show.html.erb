@@ -1,8 +1,14 @@
 <div class="parent-show">
-  <h3>Welcome to Your Profile</h3>
+  <h3>Welcome to Your Profile, <%= @parent.first_name %></h3>
   <br>
-  <h4>Email: <%= @parent.email %> </h4>
+  <div class="parent-show-profile-info">
+    <h3>Info:</h3>
+    <h4>Email: <%= @parent.email %> </h4>
+    <h4>Full Name: <%= @parent.first_name %> <%= @parent.last_name %> </h4>
+    <h4>Number of Kids: <%= @parent.number_of_children %> </h4>
+  </div>
   <br>
+
   <div class="show-sitter-form">
     <h3>Past Babysitter Notes:</h3>
     <% @notes.each do |note| %>
