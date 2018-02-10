@@ -23,6 +23,14 @@ Rails.application.routes.draw do
   post '/requests/:id', to: 'gigs#request_to_gig'
   post '/gigs/gigs/:id', to: 'gigs#add_sitter_to_gig'
 
+  authenticated :parent do
+    root to: 'calendars#index'
+  end
+
+  authenticated :sitter do
+    root to:'calendars#index'
+  end
+
   root to: 'home#index'
 
 end

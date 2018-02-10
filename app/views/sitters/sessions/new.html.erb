@@ -23,6 +23,10 @@
       <%= f.submit "Log in", class: 'button' %>
     </div>
   <% end %>
-
+  <br>
+  <h3>New to SitterSetter? Try these:</h3>
   <%= render "sitters/shared/links" %>
+  <br>
+  <h3>Not a sitter? Try this:</h3>
+  <%= link_to 'Parent Sign In', new_parent_session_path %>
 </div>
