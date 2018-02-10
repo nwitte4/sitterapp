@@ -17,9 +17,6 @@
     <% elsif sitter_signed_in? %>
     <%= link_to 'Calendar', '/', class: 'nav-elem' %>
     <%= link_to 'Sitter Sign Out', destroy_sitter_session_path, method: :delete, class: 'nav-elem' %>
-    <% else %>
-    <%= link_to 'Parent Sign In', new_parent_session_path, class: 'nav-elem' %>
-    <%= link_to 'Sitter Sign In', new_sitter_session_path, class: 'nav-elem' %>
     <% end %>
     </nav>
     <p class="notice"><%= notice %></p>

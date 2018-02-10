@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   devise_for :parents, controllers: {
   sessions: 'parents/sessions',
   registrations: 'parents/registrations'
@@ -21,6 +23,6 @@ Rails.application.routes.draw do
   post '/requests/:id', to: 'gigs#request_to_gig'
   post '/gigs/gigs/:id', to: 'gigs#add_sitter_to_gig'
 
-  root to: 'calendars#index'
+  root to: 'home#index'
 
 end

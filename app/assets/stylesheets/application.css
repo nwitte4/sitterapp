@@ -85,6 +85,22 @@ nav {
   grid-gap: 3em
 }
 
+.home-page {
+  text-align: center;
+}
+
+.home-button {
+  border: 1px solid black;
+  margin: 3em;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 30px;
+  background-color: lightgrey;
+  font-size: 1.5em;
+  transition: background-color 1s;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
 .nav-elem {
   border: 1px solid black;
   margin-top: 15%;
