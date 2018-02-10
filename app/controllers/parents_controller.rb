@@ -20,13 +20,13 @@ class ParentsController < ApplicationController
 
     ids = Sitter.pluck(:id)
 
-    if ids.include?(@sitter.last.id) && !@parent.sitters.pluck(:id).include?(@sitter.last.id)
+    if @sitter.last == nil
+      redirect_to @parent, notice: "No sitters match this email. Please try again!"
+    elsif ids.include?(@sitter.last.id) && !@parent.sitters.pluck(:id).include?(@sitter.last.id)
       @parent.sitters << @sitter
       redirect_to '/'
-    elsif ids.include?(@sitter.last.id) && @parent.sitters.pluck(:id).include?(@sitter.last.id)
+    else ids.include?(@sitter.last.id) && @parent.sitters.pluck(:id).include?(@sitter.last.id)
       redirect_to @parent, notice: "You've already given this sitter access."
-    else
-      redirect_to @parent, notice: "No sitters match this email. Please try again!"
     end
   end
 

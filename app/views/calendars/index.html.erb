@@ -73,8 +73,6 @@
 <!-- Sitter Views -->
   <div class="page">
 
-    <p> Signed in as: <%= @sitter.email %> </p> <%= link_to 'My Profile', sitter_path(@sitter), class: 'submit-button'%>
-
     <% @current_time = Time.new %>
 
     <%= month_calendar events: @gigs do |date, gigs| %>
@@ -119,18 +117,21 @@
 
     <% end %>
 
-    <div class="client-box">
-      <h4>Your clients: </h4>
-      <% if @parents.empty? %>
-        <p> No parents yet. </p>
-      <% else %>
-        <% @parents.each do |parent| %>
-          <%= link_to parent.email, parents_path(parent), class: 'parent-emails' %>
-          <br>
-          <% end %>
-      <% end %>
+    <div class="non-calendar">
+      <p><%= link_to 'My Profile', sitter_path(@sitter)%></p>
+      <p>Signed in as: <%= @sitter.email %></p>
+      <div class="client-box">
+        <h4>Your clients: </h4>
+        <% if @parents.empty? %>
+          <p> No parents yet. </p>
+        <% else %>
+          <% @parents.each do |parent| %>
+            <%= link_to parent.email, parents_path(parent), class: 'parent-emails' %>
+            <br>
+            <% end %>
+        <% end %>
+      </div>
     </div>
-
 
   </div>
 <% end %>
