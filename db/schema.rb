@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229030434) do
+ActiveRecord::Schema.define(version: 20180210190214) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20171229030434) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "number_of_children"
     t.index ["email"], name: "index_parents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
   end
@@ -86,6 +89,8 @@ ActiveRecord::Schema.define(version: 20171229030434) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_sitters_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sitters_on_reset_password_token", unique: true
   end
